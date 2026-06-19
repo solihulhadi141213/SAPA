@@ -9,16 +9,24 @@ $brandName = 'SAPA Admin';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($pageTitle) ?> | <?= htmlspecialchars($brandName) ?></title>
     <meta name="theme-color" content="#A4DD00">
-    <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg">
-    <link rel="apple-touch-icon" href="assets/img/logo/favicon.svg">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo/favicon.svg?v=2">
+    <link rel="apple-touch-icon" href="assets/img/logo/favicon.svg?v=2">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css?v=2">
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.min.css?v=2">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/300.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/400.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/400-italic.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/500.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/600.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/600-italic.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/700.css">
+    <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/800.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=2">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light admin-navbar-wrap">
         <div class="container-fluid px-3 px-xxl-4">
-            <div class="navbar-shell shadow-sm">
+            <div class="navbar-shell">
                 <a class="navbar-brand d-flex align-items-center gap-2" href="#">
                     <span class="brand-logo">
                         <img src="assets/img/logo/logo.svg" alt="Logo" class="img-fluid">
@@ -28,7 +36,7 @@ $brandName = 'SAPA Admin';
                         <small>Web Admin Template</small>
                     </span>
                 </a>
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-label="Toggle navigation">
+                <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="offcanvas-lg offcanvas-end admin-offcanvas" tabindex="-1" id="adminNavbar" aria-labelledby="adminNavbarLabel">
@@ -227,9 +235,9 @@ $brandName = 'SAPA Admin';
         </div>
     </footer>
 
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="node_modules/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js?v=2"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js?v=2"></script>
+    <script src="node_modules/apexcharts/dist/apexcharts.min.js?v=2"></script>
+    <script src="assets/js/main.js?v=2"></script>
 </body>
 </html>

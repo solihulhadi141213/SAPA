@@ -26,7 +26,7 @@ $(function () {
                     data: [28, 40, 42, 50, 55, 60, 69, 71, 76, 80, 84, 90]
                 }
             ],
-            colors: ['#98CD00', '#2E7D32'],
+            colors: ['#98CD00', '#1b5e20'],
             stroke: {
                 width: [0, 4],
                 curve: 'smooth'

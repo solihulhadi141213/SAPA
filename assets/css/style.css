@@ -8,20 +8,83 @@
     --card-bg: rgba(255, 255, 255, 0.86);
     --border-soft: rgba(164, 221, 0, 0.18);
     --shadow-soft: 0 20px 50px rgba(72, 109, 0, 0.14);
+
+    /* Cohesive Brand Colors */
+    --brand-primary: #1b5e20;
+    --brand-primary-hover: #124116;
+    --brand-accent-soft: rgba(152, 205, 0, 0.12);
+}
+
+/* Override Bootstrap Success utilities to align with brand identity */
+.btn-success {
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active {
+    background-color: var(--brand-primary-hover) !important;
+    border-color: var(--brand-primary-hover) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(27, 94, 32, 0.25) !important;
+}
+
+.btn-outline-success {
+    color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+.btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+    color: #ffffff !important;
+}
+
+.text-success {
+    color: var(--brand-primary) !important;
+}
+
+.text-bg-success-subtle {
+    background-color: var(--brand-accent-soft) !important;
+    color: var(--brand-primary) !important;
+    border-color: rgba(152, 205, 0, 0.3) !important;
+}
+
+.bg-success-subtle {
+    background-color: var(--brand-accent-soft) !important;
+    color: var(--brand-primary) !important;
 }
 
 html {
-    scroll-behavior: smooth;
+    /* Commented out to eliminate scroll stutter and lag in Firefox, supporting instant scroll */
+    /* scroll-behavior: smooth; */
 }
 
 body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     color: var(--text-dark);
     overflow-x: hidden;
+    background-color: #f8fff0;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background:
         radial-gradient(circle at top left, rgba(182, 245, 0, 0.24), transparent 32%),
         radial-gradient(circle at top right, rgba(167, 227, 153, 0.24), transparent 28%),
         linear-gradient(180deg, #f8fff0 0%, #f4f9ea 52%, #eef5df 100%);
+    pointer-events: none;
+    will-change: transform;
+    transform: translateZ(0); /* Forces GPU layer composition for the complex gradient in Firefox */
 }
 
 .admin-navbar-wrap {
@@ -38,11 +101,12 @@ body {
     gap: 1rem;
     padding: 0.95rem 1.2rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.76);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(164, 221, 0, 0.22);
-    box-shadow: 0 10px 24px rgba(72, 109, 0, 0.10);
-    will-change: transform;
+    background: rgba(255, 255, 255, 0.85); /* Slightly increased opacity for better contrast over white cards */
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(164, 221, 0, 0.28); /* Slightly stronger border to define edges */
+    box-shadow: 
+        0 16px 32px rgba(23, 48, 24, 0.08), 
+        0 4px 12px rgba(27, 94, 32, 0.06); /* Premium multi-layered floating shadow */
 }
 
 .brand-logo {
@@ -226,6 +290,8 @@ body {
     .navbar-shell {
         border-radius: 1.5rem;
         flex-wrap: wrap;
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.96) !important;
     }
 
     .admin-offcanvas {
@@ -283,14 +349,29 @@ body {
     }
 }
 
-.content-card-heavy,
-.stats-card,
-.metric-card {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 320px;
+/* Removed content-visibility rules to eliminate scroll stutter and layout recalculation shifts */
+
+/* Firefox-specific performance overrides to resolve heavy scrolling */
+@supports (-moz-appearance: none) {
+    .navbar-shell {
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.97) !important; /* Slightly more opaque background as fallback */
+        box-shadow: 
+            0 16px 32px rgba(23, 48, 24, 0.08), 
+            0 4px 12px rgba(27, 94, 32, 0.06) !important;
+    }
+    
+    body::before {
+        display: none !important; /* Hide fixed pseudo-element to prevent heavy repaint cycles */
+    }
+    
+    body {
+        /* Apply background directly to body so it scrolls naturally with page (no repaints) */
+        background:
+            radial-gradient(circle at top left, rgba(182, 245, 0, 0.24), transparent 32%),
+            radial-gradient(circle at top right, rgba(167, 227, 153, 0.24), transparent 28%),
+            linear-gradient(180deg, #f8fff0 0%, #f4f9ea 52%, #eef5df 100%) !important;
+        background-attachment: scroll !important;
+    }
 }
 
-.hero-panel {
-    content-visibility: auto;
-    contain-intrinsic-size: 1px 420px;
-}
