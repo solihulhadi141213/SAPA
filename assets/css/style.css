@@ -13,6 +13,14 @@
     --brand-primary: #1b5e20;
     --brand-primary-hover: #124116;
     --brand-accent-soft: rgba(152, 205, 0, 0.12);
+    --page-bg-start: #f8fff0;
+    --page-bg-mid: #f4f9ea;
+    --page-bg-end: #eef5df;
+    --floating-bg: rgba(255, 255, 255, 0.9);
+    --floating-border: rgba(164, 221, 0, 0.22);
+    --floating-shadow: 0 14px 28px rgba(23, 48, 24, 0.16);
+    --floating-color: #173018;
+    --floating-hover: #1b5e20;
 }
 
 /* Override Bootstrap Success utilities to align with brand identity */
@@ -21,7 +29,6 @@
     border-color: var(--brand-primary) !important;
     color: #ffffff !important;
     font-weight: 600;
-    transition: all 0.2s ease-in-out;
 }
 .btn-success:hover, .btn-success:focus, .btn-success:active {
     background-color: var(--brand-primary-hover) !important;
@@ -34,7 +41,6 @@
     color: var(--brand-primary) !important;
     border-color: var(--brand-primary) !important;
     font-weight: 600;
-    transition: all 0.2s ease-in-out;
 }
 .btn-outline-success:hover, .btn-outline-success:focus, .btn-outline-success:active {
     background-color: var(--brand-primary) !important;
@@ -57,6 +63,161 @@
     color: var(--brand-primary) !important;
 }
 
+/* Soft, professional custom buttons */
+.btn-sapa,
+.btn-sapa-outline,
+.btn-sapa-ghost {
+    border-radius: 16px;
+    font-weight: 600;
+    padding: 0.85rem 1.15rem;
+    line-height: 1.1;
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.btn-sapa {
+    color: #ffffff !important;
+    border: 1px solid rgba(27, 94, 32, 0.08);
+    background: linear-gradient(180deg, #2b7731 0%, #1b5e20 100%);
+    box-shadow: 0 8px 18px rgba(27, 94, 32, 0.14);
+}
+
+.btn-sapa:hover,
+.btn-sapa:focus {
+    color: #ffffff !important;
+    background: linear-gradient(180deg, #246728 0%, #124116 100%);
+    border-color: rgba(27, 94, 32, 0.16);
+    box-shadow: 0 10px 22px rgba(27, 94, 32, 0.18);
+    transform: translateY(-1px);
+}
+
+.btn-sapa:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(27, 94, 32, 0.14);
+}
+
+.btn-sapa-outline {
+    color: var(--brand-primary) !important;
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(27, 94, 32, 0.18);
+    box-shadow: 0 6px 14px rgba(23, 48, 24, 0.05);
+}
+
+.btn-sapa-outline:hover,
+.btn-sapa-outline:focus {
+    color: #ffffff !important;
+    background: var(--brand-primary);
+    border-color: var(--brand-primary);
+    box-shadow: 0 10px 20px rgba(27, 94, 32, 0.14);
+    transform: translateY(-1px);
+}
+
+.btn-sapa-ghost {
+    color: var(--brand-primary) !important;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.btn-sapa-ghost:hover,
+.btn-sapa-ghost:focus {
+    color: var(--brand-primary) !important;
+    background: rgba(164, 221, 0, 0.12);
+    border-color: rgba(164, 221, 0, 0.16);
+}
+
+.btn-sapa-sm {
+    padding: 0.65rem 0.95rem;
+    border-radius: 14px;
+    font-size: 0.95rem;
+}
+
+.btn-sapa-lg {
+    padding: 0.95rem 1.35rem;
+    border-radius: 18px;
+    font-size: 1rem;
+}
+
+.dark-mode .btn-sapa {
+    background: linear-gradient(180deg, #2f7e36 0%, #1b5e20 100%);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.24);
+}
+
+.dark-mode .btn-sapa-outline {
+    color: #eff9e8 !important;
+    background: rgba(20, 30, 21, 0.92);
+    border-color: rgba(164, 221, 0, 0.22);
+}
+
+.dark-mode .btn-sapa-outline:hover,
+.dark-mode .btn-sapa-outline:focus {
+    color: #0d140e !important;
+    background: #a4dd00;
+    border-color: #a4dd00;
+}
+
+.dark-mode .btn-sapa-ghost {
+    color: #eff9e8 !important;
+}
+
+.dark-mode .btn-sapa-ghost:hover,
+.dark-mode .btn-sapa-ghost:focus {
+    background: rgba(164, 221, 0, 0.14);
+    border-color: rgba(164, 221, 0, 0.18);
+}
+
+/* Global Bootstrap button refinement */
+.btn {
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(23, 48, 24, 0.06);
+    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.btn:hover,
+.btn:focus {
+    box-shadow: 0 8px 18px rgba(23, 48, 24, 0.1);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 12px rgba(23, 48, 24, 0.08);
+}
+
+.btn:not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-success):not(.btn-outline-danger):not(.btn-outline-warning):not(.btn-outline-info):not(.btn-outline-dark):not(.btn-outline-light):not(.btn-link) {
+    border: 0;
+}
+
+.btn-sm {
+    border-radius: 12px;
+}
+
+.btn-lg {
+    border-radius: 16px;
+}
+
+.btn-outline-success,
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger,
+.btn-outline-warning,
+.btn-outline-info,
+.btn-outline-dark,
+.btn-outline-light {
+    box-shadow: 0 5px 12px rgba(23, 48, 24, 0.04);
+}
+
+.dark-mode .btn {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.dark-mode .btn:hover,
+.dark-mode .btn:focus {
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.dark-mode .btn:active {
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+}
+
 html {
     /* Commented out to eliminate scroll stutter and lag in Firefox, supporting instant scroll */
     /* scroll-behavior: smooth; */
@@ -67,24 +228,23 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     overflow-x: hidden;
-    background-color: #f8fff0;
+    background: linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background:
-        radial-gradient(circle at top left, rgba(182, 245, 0, 0.24), transparent 32%),
-        radial-gradient(circle at top right, rgba(167, 227, 153, 0.24), transparent 28%),
-        linear-gradient(180deg, #f8fff0 0%, #f4f9ea 52%, #eef5df 100%);
-    pointer-events: none;
-    will-change: transform;
-    transform: translateZ(0); /* Forces GPU layer composition for the complex gradient in Firefox */
+body.dark-mode {
+    --text-dark: #e7f3df;
+    --card-bg: rgba(15, 25, 16, 0.88);
+    --border-soft: rgba(164, 221, 0, 0.12);
+    --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.32);
+    --brand-accent-soft: rgba(164, 221, 0, 0.14);
+    --page-bg-start: #0b120c;
+    --page-bg-mid: #101910;
+    --page-bg-end: #141f15;
+    --floating-bg: rgba(20, 30, 21, 0.92);
+    --floating-border: rgba(164, 221, 0, 0.18);
+    --floating-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+    --floating-color: #e7f3df;
+    --floating-hover: #a4dd00;
 }
 
 .admin-navbar-wrap {
@@ -101,12 +261,9 @@ body::before {
     gap: 1rem;
     padding: 0.95rem 1.2rem;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.85); /* Slightly increased opacity for better contrast over white cards */
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(164, 221, 0, 0.28); /* Slightly stronger border to define edges */
-    box-shadow: 
-        0 16px 32px rgba(23, 48, 24, 0.08), 
-        0 4px 12px rgba(27, 94, 32, 0.06); /* Premium multi-layered floating shadow */
+    background: rgba(255, 255, 255, 0.96);
+    border: 1px solid rgba(164, 221, 0, 0.18);
+    box-shadow: 0 8px 18px rgba(23, 48, 24, 0.08);
 }
 
 .brand-logo {
@@ -153,7 +310,7 @@ body::before {
 .dropdown-menu {
     border: 1px solid var(--border-soft);
     border-radius: 1rem;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 8px 18px rgba(72, 109, 0, 0.08);
 }
 
 .dropdown-item:focus,
@@ -169,10 +326,10 @@ body::before {
 .content-card,
 .stats-card,
 .metric-card {
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: 1.5rem;
-    box-shadow: 0 8px 18px rgba(72, 109, 0, 0.06);
+    box-shadow: 0 6px 14px rgba(72, 109, 0, 0.05);
 }
 
 .hero-panel,
@@ -231,7 +388,6 @@ body::before {
     margin-top: 0.4rem;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--brand-green), var(--brand-green-deep));
-    box-shadow: 0 0 0 6px rgba(164, 221, 0, 0.14);
     flex: 0 0 auto;
 }
 
@@ -246,9 +402,96 @@ body::before {
     flex-wrap: wrap;
     padding: 1rem 1.25rem;
     border-radius: 1.25rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(164, 221, 0, 0.18);
-    box-shadow: 0 10px 24px rgba(72, 109, 0, 0.08);
+    box-shadow: 0 6px 14px rgba(72, 109, 0, 0.05);
+}
+
+.floating-actions {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    z-index: 1040;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.floating-btn {
+    width: 3.35rem;
+    height: 3.35rem;
+    border: 1px solid var(--floating-border);
+    border-radius: 999px;
+    background: var(--floating-bg);
+    color: var(--floating-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 14px rgba(23, 48, 24, 0.12);
+}
+
+.floating-btn:hover,
+.floating-btn:focus {
+    color: var(--floating-hover);
+}
+
+.floating-btn i {
+    font-size: 1.1rem;
+}
+
+#backToTop {
+    opacity: 1;
+    visibility: visible;
+}
+
+.dark-mode .navbar-shell,
+.dark-mode .hero-panel,
+.dark-mode .content-card,
+.dark-mode .stats-card,
+.dark-mode .metric-card,
+.dark-mode .footer-shell,
+.dark-mode .admin-offcanvas {
+    background: rgba(20, 30, 21, 0.96) !important;
+    border-color: rgba(164, 221, 0, 0.16) !important;
+}
+
+.dark-mode .brand-text small,
+.dark-mode .brand-text strong,
+.dark-mode .footer-shell .text-muted,
+.dark-mode .text-muted {
+    color: #ffffff !important;
+}
+
+.dark-mode .navbar-nav .nav-link {
+    color: rgba(231, 243, 223, 0.9);
+}
+
+.dark-mode .navbar-nav .nav-link:hover,
+.dark-mode .navbar-nav .nav-link.active,
+.dark-mode .dropdown-item:hover,
+.dark-mode .dropdown-item:focus {
+    background: rgba(164, 221, 0, 0.16);
+    color: #ffffff;
+}
+
+.dark-mode .btn-outline-success {
+    color: #dff4c9 !important;
+    border-color: rgba(164, 221, 0, 0.55) !important;
+}
+
+.dark-mode .btn-outline-success:hover,
+.dark-mode .btn-outline-success:focus,
+.dark-mode .btn-outline-success:active {
+    color: #0d140e !important;
+}
+
+.dark-mode .floating-btn {
+    background: rgba(20, 30, 21, 0.96);
+}
+
+.dark-mode .floating-btn:hover,
+.dark-mode .floating-btn:focus {
+    color: #dfffac;
 }
 
 .container-fluid {
@@ -290,7 +533,6 @@ body::before {
     .navbar-shell {
         border-radius: 1.5rem;
         flex-wrap: wrap;
-        backdrop-filter: none !important;
         background: rgba(255, 255, 255, 0.96) !important;
     }
 
@@ -330,6 +572,11 @@ body::before {
         justify-content: center;
         text-align: center;
     }
+
+    .floating-actions {
+        right: 1rem;
+        bottom: 1rem;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -351,27 +598,51 @@ body::before {
 
 /* Removed content-visibility rules to eliminate scroll stutter and layout recalculation shifts */
 
-/* Firefox-specific performance overrides to resolve heavy scrolling */
-@supports (-moz-appearance: none) {
-    .navbar-shell {
-        backdrop-filter: none !important;
-        background: rgba(255, 255, 255, 0.97) !important; /* Slightly more opaque background as fallback */
-        box-shadow: 
-            0 16px 32px rgba(23, 48, 24, 0.08), 
-            0 4px 12px rgba(27, 94, 32, 0.06) !important;
-    }
-    
-    body::before {
-        display: none !important; /* Hide fixed pseudo-element to prevent heavy repaint cycles */
-    }
-    
-    body {
-        /* Apply background directly to body so it scrolls naturally with page (no repaints) */
-        background:
-            radial-gradient(circle at top left, rgba(182, 245, 0, 0.24), transparent 32%),
-            radial-gradient(circle at top right, rgba(167, 227, 153, 0.24), transparent 28%),
-            linear-gradient(180deg, #f8fff0 0%, #f4f9ea 52%, #eef5df 100%) !important;
-        background-attachment: scroll !important;
-    }
+.chart-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+    padding: 1.5rem;
+    border-radius: 1.25rem;
+    background: linear-gradient(180deg, rgba(152, 205, 0, 0.08), rgba(255, 255, 255, 0.4));
+    border: 1px dashed rgba(23, 48, 24, 0.12);
 }
 
+/* Card */
+.card {
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-header,
+.card-footer {
+  border-color: #ebeef4;
+  background-color: #fff;
+  color: #798eb3;
+  padding: 15px;
+}
+
+.card-title {
+  padding: 20px 0 15px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #012970;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-title span {
+  color: #899bbd;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.card-body {
+  padding: 0 20px 20px 20px;
+}
+
+.card-img-overlay {
+  background-color: rgba(255, 255, 255, 0.6);
+}

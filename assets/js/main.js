@@ -1,77 +1,54 @@
 $(function () {
-    const chartEl = document.querySelector('#salesChart');
+    const bodyEl = document.body;
+    const darkModeButton = document.getElementById('toggleDarkMode');
+    const backToTopButton = document.getElementById('backToTop');
+    const darkModeStorageKey = 'sapa-dark-mode';
 
-    if (chartEl && window.ApexCharts) {
-        const options = {
-            chart: {
-                height: 340,
-                type: 'line',
-                toolbar: {
-                    show: false
-                },
-                fontFamily: 'inherit',
-                animations: {
-                    enabled: false
-                }
-            },
-            series: [
-                {
-                    name: 'Penjualan',
-                    type: 'column',
-                    data: [32, 45, 38, 54, 49, 68, 73, 62, 81, 77, 89, 95]
-                },
-                {
-                    name: 'Target',
-                    type: 'line',
-                    data: [28, 40, 42, 50, 55, 60, 69, 71, 76, 80, 84, 90]
-                }
-            ],
-            colors: ['#98CD00', '#1b5e20'],
-            stroke: {
-                width: [0, 4],
-                curve: 'smooth'
-            },
-            dataLabels: {
-                enabled: false
-            },
-            plotOptions: {
-                bar: {
-                    borderRadius: 8,
-                    columnWidth: '50%'
-                }
-            },
-            grid: {
-                borderColor: 'rgba(23, 48, 24, 0.08)'
-            },
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des']
-            },
-            yaxis: [
-                {
-                    title: {
-                        text: 'Penjualan'
-                    }
-                },
-                {
-                    opposite: true,
-                    title: {
-                        text: 'Target'
-                    }
-                }
-            ],
-            legend: {
-                position: 'top',
-                horizontalAlign: 'left'
-            },
-            tooltip: {
-                shared: true,
-                intersect: false
-            }
-        };
+    function safeGetStorage(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch (error) {
+            return null;
+        }
+    }
 
-        window.requestAnimationFrame(function () {
-            new ApexCharts(chartEl, options).render();
-        });
+    function safeSetStorage(key, value) {
+        try {
+            localStorage.setItem(key, value);
+        } catch (error) {
+            // Ignore storage failures in restricted browsers.
+        }
+    }
+
+    function updateDarkModeButton(enabled) {
+        if (!darkModeButton) {
+            return;
+        }
+
+        darkModeButton.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+        darkModeButton.setAttribute(
+            'aria-label',
+            enabled ? 'Matikan mode gelap' : 'Aktifkan mode gelap'
+        );
+        darkModeButton.title = enabled ? 'Matikan mode gelap' : 'Aktifkan mode gelap';
+        darkModeButton.innerHTML = enabled
+            ? '<i class="bi bi-sun"></i>'
+            : '<i class="bi bi-moon-stars"></i>';
+    }
+
+    function setDarkMode(enabled) {
+        bodyEl.classList.toggle('dark-mode', enabled);
+        updateDarkModeButton(enabled);
+        safeSetStorage(darkModeStorageKey, enabled ? '1' : '0');
+    }
+
+    function toggleDarkMode() {
+        setDarkMode(!bodyEl.classList.contains('dark-mode'));
+    }
+
+    function scrollToTop() {
+        // Use instant scroll to avoid Firefox performance issues on long pages.
+        window.scrollTo(0, 0);
     }
 
     const offcanvasEl = document.getElementById('adminNavbar');
@@ -85,7 +62,7 @@ $(function () {
         });
     }
 
-    $('.admin-offcanvas .nav-link').on('click', function (event) {
+    $('.admin-offcanvas .nav-link').on('click', function () {
         const target = $(this).attr('data-bs-toggle');
         if (target === 'dropdown') {
             return;
@@ -96,4 +73,16 @@ $(function () {
             offcanvas.hide();
         }
     });
+
+    const savedDarkMode = safeGetStorage(darkModeStorageKey);
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkMode(savedDarkMode ? savedDarkMode === '1' : prefersDark);
+
+    if (darkModeButton) {
+        darkModeButton.addEventListener('click', toggleDarkMode);
+    }
+
+    if (backToTopButton) {
+        backToTopButton.addEventListener('click', scrollToTop);
+    }
 });

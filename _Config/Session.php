@@ -94,7 +94,7 @@
 
                         $SessionIdAkses          = $DataSessionAkses['id_akses'];
                         $SessionNama             = $DataSessionAkses['nama_akses'];
-                        $SessionEmail            = $DataSessionAkses['email'];
+                        $SessionEmail            = $DataSessionAkses['email_akses'];
                         $SessionKontak           = $DataSessionAkses['kontak_akses'];
                         $SessionAkses            = $DataSessionAkses['akses'];
                         $SessionGambar           = $DataSessionAkses['image_akses'];

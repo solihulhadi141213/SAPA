@@ -1,1 +1,7 @@
+# assets
+/assets/img/user/*
+/assets/img/logo/*
+/assets/img/animate/*
+
+# node_modules
 node_modules/
