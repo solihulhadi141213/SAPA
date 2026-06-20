@@ -11,21 +11,24 @@
                 </span>
             </a>
             <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminNavbar" aria-controls="adminNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <i class="bi bi-list navbar-toggler-icon-custom" aria-hidden="true"></i>
             </button>
             <div class="offcanvas-lg offcanvas-end admin-offcanvas" tabindex="-1" id="adminNavbar" aria-labelledby="adminNavbarLabel">
                 <div class="offcanvas-header d-lg-none">
                     <div class="d-flex align-items-center gap-2" id="adminNavbarLabel">
                         <span class="brand-logo brand-logo-sm">
-                            <img src="assets/img/logo/logo.svg" alt="Logo" class="img-fluid">
+                            <img src="assets/img/logo/<?php echo $app_icon; ?>?v=<?php echo $env_version; ?>" alt="Logo" class="img-fluid">
                         </span>
                         <div>
                             <div class="fw-semibold"><?= htmlspecialchars($app_name) ?></div>
                             <small class="text-muted"><?= htmlspecialchars($app_description) ?></small>
                         </div>
                     </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Tutup"></button>
+                    <button type="button" class="btn-close btn-close-custom shadow-none" data-bs-dismiss="offcanvas" data-mdb-dismiss="offcanvas" aria-label="Tutup">
+                        <i class="bi bi-x-lg" aria-hidden="true"></i>
+                    </button>
                 </div>
+
                 <div class="offcanvas-body p-3 p-lg-0">
                     <ul class="navbar-nav ms-lg-auto align-items-lg-center gap-lg-1 admin-nav-list">
                         <li class="nav-item">
@@ -45,15 +48,19 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle 
                                 <?php 
-                                    if($Page==""||$Page=="Dashboard"){echo "active";} 
+                                    if(
+                                        $Page=="SesiSurvey"||
+                                        $Page=="Pertanyaan"||
+                                        $Page=="Jawaban"
+                                    ){echo "active";} 
                                 ?>
                             " href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-journal-text me-1"></i>Survei
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item <?php if($Page==""||$Page=="Dashboard"){echo "active";}  ?>" href="#">Sesi Survei</a></li>
-                                <li><a class="dropdown-item" href="#">Daftar Pertanyaan</a></li>
-                                <li><a class="dropdown-item" href="#">Jawaban Responden</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="SesiSurvey"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Sesi Survei</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Pertanyaan"){echo "active";}  ?>" href="index.php?Page=Pertanyaan">Daftar Pertanyaan</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban Responden</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

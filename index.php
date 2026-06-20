@@ -86,6 +86,9 @@
 
             // Routing JS
             include "_Partial/RoutingJs.php";
+
+            // Routing Swal
+            include "_Partial/RoutingSwal.php";
         ?>
     </body>
 </html>

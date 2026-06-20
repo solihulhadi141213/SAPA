@@ -6,22 +6,8 @@
         
         //Index Halaman
         $page_arry=[
-            "MyProfile"           => "_Page/MyProfile/MyProfile.php",
-            "AksesFitur"          => "_Page/AksesFitur/AksesFitur.php",
-            "AksesEntitas"        => "_Page/AksesEntitas/AksesEntitas.php",
-            "Akses"               => "_Page/Akses/Akses.php",
-            "Anggota"             => "_Page/Anggota/Anggota.php",
-            "JenisSimpanan"       => "_Page/JenisSimpanan/JenisSimpanan.php",
-            "JenisPinjaman"       => "_Page/JenisPinjaman/JenisPinjaman.php",
-            "Supplier"            => "_Page/Supplier/Supplier.php",
-            "KategoriHarga"       => "_Page/KategoriHarga/KategoriHarga.php",
-            "Barang"              => "_Page/Barang/Barang.php",
-            "BatchExpired"        => "_Page/BatchExpired/BatchExpired.php",
-            "Diskon"              => "_Page/Diskon/Diskon.php",
-            "StockOpename"        => "_Page/StockOpename/StockOpename.php",
-            "SettingGeneral"      => "_Page/SettingGeneral/SettingGeneral.php",
-            "SettingEmailGateway" => "_Page/SettingEmailGateway/SettingEmailGateway.php",
-            "Error"               => "_Page/Error/Error.php"
+            "Aksesibilitas" => "_Page/Aksesibilitas/Aksesibilitas.php",
+            "Error"         => "_Page/Error/Error.php"
         ];
 
         //Tangkap 'Page'

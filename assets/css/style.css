@@ -164,59 +164,6 @@
     border-color: rgba(164, 221, 0, 0.18);
 }
 
-/* Global Bootstrap button refinement */
-.btn {
-    border-radius: 14px;
-    box-shadow: 0 6px 14px rgba(23, 48, 24, 0.06);
-    transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
-}
-
-.btn:hover,
-.btn:focus {
-    box-shadow: 0 8px 18px rgba(23, 48, 24, 0.1);
-    transform: translateY(-1px);
-}
-
-.btn:active {
-    transform: translateY(0);
-    box-shadow: 0 5px 12px rgba(23, 48, 24, 0.08);
-}
-
-.btn:not(.btn-outline-primary):not(.btn-outline-secondary):not(.btn-outline-success):not(.btn-outline-danger):not(.btn-outline-warning):not(.btn-outline-info):not(.btn-outline-dark):not(.btn-outline-light):not(.btn-link) {
-    border: 0;
-}
-
-.btn-sm {
-    border-radius: 12px;
-}
-
-.btn-lg {
-    border-radius: 16px;
-}
-
-.btn-outline-success,
-.btn-outline-primary,
-.btn-outline-secondary,
-.btn-outline-danger,
-.btn-outline-warning,
-.btn-outline-info,
-.btn-outline-dark,
-.btn-outline-light {
-    box-shadow: 0 5px 12px rgba(23, 48, 24, 0.04);
-}
-
-.dark-mode .btn {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-}
-
-.dark-mode .btn:hover,
-.dark-mode .btn:focus {
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
-}
-
-.dark-mode .btn:active {
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
-}
 
 html {
     /* Commented out to eliminate scroll stutter and lag in Firefox, supporting instant scroll */
@@ -263,7 +210,7 @@ body.dark-mode {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.96);
     border: 1px solid rgba(164, 221, 0, 0.18);
-    box-shadow: 0 8px 18px rgba(23, 48, 24, 0.08);
+    box-shadow: none;
 }
 
 .brand-logo {
@@ -305,6 +252,50 @@ body.dark-mode {
 .navbar-nav .nav-link.active {
     background: rgba(164, 221, 0, 0.18);
     color: var(--text-dark);
+}
+
+.navbar-toggler {
+    border: 0;
+    padding: 0.5rem;
+    line-height: 1;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--text-dark);
+}
+
+.btn-close-custom {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    opacity: 1;
+    color: var(--text-dark);
+    background: transparent;
+    border: 0;
+    padding: 0;
+    box-shadow: none !important;
+}
+
+.btn-close-custom:focus {
+    box-shadow: none !important;
+}
+
+.btn-close-custom i {
+    font-size: 1rem;
+    line-height: 1;
 }
 
 .dropdown-menu {
@@ -539,7 +530,11 @@ body.dark-mode {
     .admin-offcanvas {
         background: rgba(248, 255, 240, 0.98);
         border-left: 1px solid rgba(164, 221, 0, 0.18);
-        box-shadow: -10px 0 22px rgba(72, 109, 0, 0.08);
+        box-shadow: none;
+    }
+
+    .admin-offcanvas .offcanvas-header {
+        border-bottom: 1px solid rgba(164, 221, 0, 0.12);
     }
 
     .admin-offcanvas .navbar-nav {

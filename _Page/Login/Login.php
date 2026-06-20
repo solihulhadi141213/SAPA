@@ -46,7 +46,7 @@
         <main class="login-shell">
             <div class="login-card">
                 <div class="row g-0">
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 text-center">
                         <div class="login-brand d-flex flex-column justify-content-between">
                             <div>
                                 <span class="brand-logo">

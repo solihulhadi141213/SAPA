@@ -26,6 +26,9 @@
     <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/700.css?v=<?php echo $env_version; ?>">
     <link rel="stylesheet" href="node_modules/@fontsource/plus-jakarta-sans/800.css?v=<?php echo $env_version; ?>">
 
+    <!-- MDB UI Kit -->
+    <link href="node_modules/mdb-ui-kit/css/mdb.min.css" rel="stylesheet">
+
     <!-- Custome Style -->
     <link rel="stylesheet" href="assets/css/style.css?v=<?php echo $env_version; ?>">
 </head>
