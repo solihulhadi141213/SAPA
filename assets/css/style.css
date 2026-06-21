@@ -199,17 +199,27 @@ body.dark-mode {
     top: 0;
     z-index: 1030;
     padding: 16px 0 0;
+    /* Hapus shadow bawaan MDB UI Kit pada navbar */
+    box-shadow: none !important;
+}
+
+/* Override shadow MDB pada elemen nav */
+nav.admin-navbar-wrap,
+.navbar.admin-navbar-wrap {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
 }
 
 .navbar-shell {
     width: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: nowrap; /* Pastikan brand & toggler selalu 1 baris */
     gap: 1rem;
     padding: 0.95rem 1.2rem;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.96);
-    border: 1px solid rgba(164, 221, 0, 0.18);
+    border: 0;
     box-shadow: none;
 }
 
@@ -242,16 +252,26 @@ body.dark-mode {
 }
 
 .navbar-nav .nav-link {
-    color: rgba(23, 48, 24, 0.82);
-    font-weight: 600;
+    color: rgba(23, 48, 24, 0.75);
+    font-weight: 450;
+    font-size: 0.875rem;
+    letter-spacing: 0.015em;
     border-radius: 999px;
-    padding: 0.65rem 1rem;
+    padding: 0.5rem 0.875rem;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+/* Ikon dalam nav link sedikit lebih kecil & ringan */
+.navbar-nav .nav-link i {
+    font-size: 0.85rem;
+    opacity: 0.8;
 }
 
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
-    background: rgba(164, 221, 0, 0.18);
-    color: var(--text-dark);
+    background: rgba(164, 221, 0, 0.16);
+    color: var(--brand-primary);
+    font-weight: 500;
 }
 
 .navbar-toggler {
@@ -275,7 +295,7 @@ body.dark-mode {
     color: var(--text-dark);
 }
 
-.btn-close-custom {
+.offcanvas-close-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -286,16 +306,28 @@ body.dark-mode {
     background: transparent;
     border: 0;
     padding: 0;
+    position: relative;
+    z-index: 10; /* Dinaikkan agar tidak tertutup elemen lain */
+    cursor: pointer;
+    box-shadow: none !important;
+    pointer-events: auto !important; /* Pastikan klik bisa diterima */
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.offcanvas-close-btn:focus {
+    outline: none;
     box-shadow: none !important;
 }
 
-.btn-close-custom:focus {
-    box-shadow: none !important;
+.offcanvas-close-btn:hover {
+    opacity: 0.75;
 }
 
-.btn-close-custom i {
+.offcanvas-close-icon {
     font-size: 1rem;
     line-height: 1;
+    pointer-events: none; /* Ikon tidak menyerap klik, tombolnya yang menerima */
 }
 
 .dropdown-menu {
@@ -461,9 +493,28 @@ body.dark-mode {
 .dark-mode .navbar-nav .nav-link.active,
 .dark-mode .dropdown-item:hover,
 .dark-mode .dropdown-item:focus {
-    background: rgba(164, 221, 0, 0.16);
-    color: #ffffff;
+    background: rgba(164, 221, 0, 0.18);
+    color: #e7f3df;
 }
+
+/* Dropdown menu dark mode - background gelap & teks terang */
+.dark-mode .dropdown-menu {
+    background-color: #1a2b1b;
+    border-color: rgba(164, 221, 0, 0.18);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Warna teks item dropdown di dark mode */
+.dark-mode .dropdown-item {
+    color: rgba(231, 243, 223, 0.85);
+    font-size: 0.875rem;
+}
+
+/* Divider dark mode */
+.dark-mode .dropdown-divider {
+    border-color: rgba(164, 221, 0, 0.12);
+}
+
 
 .dark-mode .btn-outline-success {
     color: #dff4c9 !important;
@@ -523,7 +574,7 @@ body.dark-mode {
 @media (max-width: 991.98px) {
     .navbar-shell {
         border-radius: 1.5rem;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* Jaga brand & toggler tetap 1 baris di mobile */
         background: rgba(255, 255, 255, 0.96) !important;
     }
 
@@ -640,4 +691,160 @@ body.dark-mode {
 
 .card-img-overlay {
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* profile-img */
+.profile-img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.image-my-profile{
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    overflow: hidden;
+    border: 3px solid #fff; /* optional */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* optional */
+}
+
+/* =======================================================
+   FOTO PROFILE
+======================================================= */
+.header-profile{
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.9);
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.header-profile:hover{
+    transform: scale(1.03);
+}
+
+
+/* =======================================================
+   HEADER MODAL BERGAMBAR
+======================================================= */
+.custom-modal-header{
+    position: relative;
+    min-height: 220px;
+    padding: 20px;
+    border-bottom: none;
+    overflow: hidden;
+
+    /* Background */
+    background-image: linear-gradient(
+        rgba(47, 2, 245, 0.35),
+        rgba(50, 4, 255, 0.74)
+    );
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* Overlay */
+.custom-modal-header .overlay{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.15);
+}
+
+/* =======================================================
+   CONTENT HEADER
+======================================================= */
+.custom-modal-header .header-content{
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* =======================================================
+   FOTO PROFILE
+======================================================= */
+.header-profile{
+    width: 220px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.9);
+
+    background: #ffffff;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover */
+.header-profile:hover{
+    transform: scale(1.03);
+}
+
+/* =======================================================
+   CLOSE BUTTON
+======================================================= */
+.custom-modal-header .btn-close{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    z-index: 3;
+
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 50%;
+
+    padding: 10px;
+
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+/* Hover close */
+.custom-modal-header .btn-close:hover{
+    background-color: rgba(255,255,255,0.35);
+    transform: rotate(90deg);
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media (max-width: 576px){
+
+    .custom-modal-header{
+        min-height: 180px;
+    }
+
+    .header-profile{
+        width: 90px;
+        height: 90px;
+    }
+
+    .modal-body{
+        padding: 20px;
+    }
 }

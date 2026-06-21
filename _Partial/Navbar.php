@@ -24,8 +24,8 @@
                             <small class="text-muted"><?= htmlspecialchars($app_description) ?></small>
                         </div>
                     </div>
-                    <button type="button" class="btn-close btn-close-custom shadow-none" data-bs-dismiss="offcanvas" data-mdb-dismiss="offcanvas" aria-label="Tutup">
-                        <i class="bi bi-x-lg" aria-hidden="true"></i>
+                    <button type="button" class="offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="Tutup" onclick="var el=document.getElementById('adminNavbar');if(el&&bootstrap&&bootstrap.Offcanvas){bootstrap.Offcanvas.getInstance(el)&&bootstrap.Offcanvas.getInstance(el).hide();}">
+                        <i class="bi bi-x-lg offcanvas-close-icon" aria-hidden="true"></i>
                     </button>
                 </div>
 

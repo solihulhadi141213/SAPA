@@ -274,39 +274,9 @@
 
             // Image
             if (empty($image_akses)) {
-                $image_path = "assets/img/user/No-Image.png";
+                $image_path = "assets/img/No-Image.png";
             } else {
                 $image_path = "assets/img/user/" . $image_akses;
-            }
-
-            // Button fitur
-            if (empty($jumlah_fitur)) {
-
-                $button_fitur = '
-                    <button 
-                        type="button" 
-                        class="btn btn-sm btn-outline-secondary" 
-                        data-bs-toggle="modal" 
-                        data-bs-target="#ModalFitur" 
-                        data-id="'.$id_akses.'">
-
-                        0 Fitur
-                    </button>
-                ';
-
-            } else {
-
-                $button_fitur = '
-                    <button 
-                        type="button" 
-                        class="btn btn-sm btn-secondary" 
-                        data-bs-toggle="modal" 
-                        data-bs-target="#ModalFitur" 
-                        data-id="'.$id_akses.'">
-
-                        '.$jumlah_fitur.' Fitur
-                    </button>
-                ';
             }
 
             $html .= '
@@ -319,9 +289,7 @@
                     <td>
                         <div class="table-user">
 
-                            <img 
-                                src="'.$image_path.'" 
-                                class="rounded-circle profile-img">
+                            <img src="'.$image_path.'" class="rounded-circle profile-img">
 
                             <a 
                                 href="javascript:void(0);" 
@@ -358,10 +326,6 @@
                     </td>
 
                     <td class="text-center">
-                        '.$button_fitur.'
-                    </td>
-
-                    <td class="text-center">
 
                         <button 
                             class="btn btn-md btn-outline-secondary btn-floating"
@@ -372,67 +336,35 @@
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end">
-
                             <li>
-                                <a 
-                                    class="dropdown-item"
-                                    href="javascript:void(0);"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalDetail"
-                                    data-id="'.$id_akses.'">
-
-                                    <i class="bi bi-info-circle"></i> Detail
+                                <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalDetail" data-id="'.$id_akses.'">
+                                    Detail
                                 </a>
                             </li>
 
                             <li>
-                                <a 
-                                    class="dropdown-item"
-                                    href="javascript:void(0);"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalEdit"
-                                    data-id="'.$id_akses.'">
-
-                                    <i class="bi bi-pencil"></i> Edit Profil
+                                <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalEdit" data-id="'.$id_akses.'">
+                                    Edit Profil
                                 </a>
                             </li>
 
                             <li>
-                                <a 
-                                    class="dropdown-item"
-                                    href="javascript:void(0);"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalEditFoto"
-                                    data-id="'.$id_akses.'">
-
-                                    <i class="bi bi-image"></i> Edit Foto
+                                <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalEditFoto" data-id="'.$id_akses.'">
+                                    Edit Foto
                                 </a>
                             </li>
 
                             <li>
-                                <a 
-                                    class="dropdown-item"
-                                    href="javascript:void(0);"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalEditPassword"
-                                    data-id="'.$id_akses.'">
-
-                                    <i class="bi bi-key"></i> Edit Password
+                                <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalEditPassword" data-id="'.$id_akses.'">
+                                    Edit Password
                                 </a>
                             </li>
                            
                             <li>
-                                <a 
-                                    class="dropdown-item text-danger"
-                                    href="javascript:void(0);"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalHapus"
-                                    data-id="'.$id_akses.'">
-
-                                    <i class="bi bi-trash"></i> Hapus
+                                <a class="dropdown-item text-danger" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalHapus" data-id="'.$id_akses.'">
+                                    Hapus
                                 </a>
                             </li>
-
                         </ul>
 
                     </td>

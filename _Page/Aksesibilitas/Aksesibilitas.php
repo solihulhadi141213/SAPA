@@ -19,13 +19,12 @@
                 <table class="table table-striped table-hover">
                     <thead>
                         <tr>
-                            <td><small><b>No</b></small></td>
+                            <td class="text-center"><small><b>No</b></small></td>
                             <td><small><b>Nama</b></small></td>
                             <td><small><b>Email</b></small></td>
                             <td><small><b>Kontak</b></small></td>
-                            <td><small><b>Akses</b></small></td>
-                            <td><small><b>Status</b></small></td>
-                            <td><small><b>Opsi</b></small></td>
+                            <td class="text-center"><small><b>Akses</b></small></td>
+                            <td class="text-center"><small><b>Opsi</b></small></td>
                         </tr>
                     </thead>
                     <tbody id="tabel_akses">
@@ -41,15 +40,15 @@
     </div>
     <div class="row mb-3">
         <div class="col-6">
-            <small>
+            <small id="page_info">
                 Page 1 Of 100
             </small>
         </div>
         <div class="col-6 text-end">
-            <button type="button" class="btn btn-md btn-outline-secondary btn-floating">
+            <button type="button" class="btn btn-md btn-outline-secondary btn-floating" id="prev_button">
                 <i class="bi bi-chevron-left"></i>
             </button>
-            <button type="button" class="btn btn-md btn-outline-secondary btn-floating">
+            <button type="button" class="btn btn-md btn-outline-secondary btn-floating" id="next_button">
                 <i class="bi bi-chevron-right"></i>
             </button>
         </div>

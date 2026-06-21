@@ -31,7 +31,7 @@
                                 <option value="nama_akses">Nama</option>
                                 <option value="kontak_akses">Kontak</option>
                                 <option value="email">Email</option>
-                                <option value="akses">Level/Entitas</option>
+                                <option value="akses">Akses</option>
                             </select>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                                 <option value="nama_akses">Nama</option>
                                 <option value="kontak_akses">Kontak</option>
                                 <option value="email">Email</option>
-                                <option value="akses">Level/Entitas</option>
+                                <option value="akses">Akses</option>
                             </select>
                         </div>
                     </div>
@@ -119,6 +119,9 @@
                             <label for="akses">Level/Entitas</label>
                             <select name="akses" id="akses" class="form-control">
                                 <option value="">Pilih</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Manajer Mutu">Manajer Mutu</option>
+                                <option value="Direktur">Direktur</option>
                             </select>
                         </div>
                     </div>
@@ -294,32 +297,6 @@
                     </button>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<!-- FITUR AKSES-->
-<div class="modal fade" id="ModalFitur" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-dark">
-                    <i class="bi bi-info-circle"></i> Daftar Fitur Pengguna
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-12" id="FormFitur">
-                        <!-- Form Fitur Disini -->
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
-                    <i class="bi bi-x-circle"></i> Tutup
-                </button>
-            </div>
         </div>
     </div>
 </div>
