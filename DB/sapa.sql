@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 19, 2026 at 05:33 PM
+-- Generation Time: Jun 22, 2026 at 09:12 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -32,6 +32,8 @@ CREATE TABLE IF NOT EXISTS `akses` (
   `id_akses` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `nama_akses` varchar(255) NOT NULL,
   `kontak_akses` varchar(255) NOT NULL,
+  `email_akses` varchar(255) NOT NULL,
+  `password` text NOT NULL,
   `akses` enum('Admin','Manajer Mutu','Direktur') NOT NULL,
   `image_akses` varchar(255) DEFAULT NULL,
   `datetime_update` datetime NOT NULL,
@@ -99,16 +101,20 @@ CREATE TABLE IF NOT EXISTS `setting_email_gateway` (
 DROP TABLE IF EXISTS `setting_general`;
 CREATE TABLE IF NOT EXISTS `setting_general` (
   `id_setting_general` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `title_page` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `kata_kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `alamat_bisnis` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `email_bisnis` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `telepon_bisnis` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `favicon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `app_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `app_description` varchar(255) DEFAULT NULL,
+  `app_icon` varchar(255) NOT NULL,
+  `app_author` varchar(255) NOT NULL,
+  `metatag_keyword` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `metatag_description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `company_name` varchar(255) NOT NULL,
+  `company_address` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `company_email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `company_phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `company_logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `base_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `environment_status` enum('Development','Staging','Production') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `configuration_status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_setting_general`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

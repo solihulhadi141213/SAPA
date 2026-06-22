@@ -1,4 +1,4 @@
-<div class="pagetitle">
+<div class="pagetitle mb-4">
     <h1>
         <a href=""><i class="bi bi-people"></i> Aksesibilitas</a></a>
     </h1>
@@ -9,6 +9,7 @@
         </ol>
     </nav>
 </div>
+
 <section class="hero-panel mb-4">
     <div class="row align-items-center g-4 mb-3">
         <div class="col-8">

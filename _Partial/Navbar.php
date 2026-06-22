@@ -74,14 +74,23 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle 
+                            <?php 
+                                if(
+                                    $Page=="SettingGeneral"||
+                                    $Page=="KoneksiSimrs"||
+                                    $Page=="EmailGateway"||
+                                    $Page=="WahtsappGateway"
+                                ){echo "active";} 
+                            ?>
+                            " href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-gear me-1"></i>Setting
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item" href="#">Identitas RS</a></li>
-                                <li><a class="dropdown-item" href="#">Logo & Favicon</a></li>
-                                <li><a class="dropdown-item" href="#">Koneksi SIMRS</a></li>
-                                <li><a class="dropdown-item" href="#">Email & WhatsApp Gateway</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="SettingGeneral"){echo "active";}  ?>" href="index.php?Page=SettingGeneral">Pengaturan Umum</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="KoneksiSimrs"){echo "active";}  ?>" href="index.php?Page=KoneksiSimrs">Koneksi SIMRS</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="EmailGateway"){echo "active";}  ?>" href="index.php?Page=EmailGateway">Email Gateway</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="WahtsappGateway"){echo "active";}  ?>" href="index.php?Page=WahtsappGateway">WhatsApp Gateway</a></li>
                             </ul>
                         </li>
 

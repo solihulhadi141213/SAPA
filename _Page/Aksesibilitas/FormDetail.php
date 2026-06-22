@@ -178,45 +178,45 @@
     <!-- Body -->
     <div class="modal-body">
         <div class="row mb-3">
-            <div class="col-6"><small>Nama Pengguna</small></div>
+            <div class="col-4"><small>Nama Pengguna</small></div>
             <div class="col-1"><small>:</small></div>
-            <div class="col-5">
+            <div class="col-6">
                 <small class="text-grayish">
                     <?php echo "$nama_akses"; ?>
                 </small>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-6"><small>Nomor Kontak</small></div>
+            <div class="col-4"><small>Nomor Kontak</small></div>
             <div class="col-1"><small>:</small></div>
-            <div class="col-5">
+            <div class="col-6">
                 <small class="text-grayish">
                     <?php echo "$kontak_akses"; ?>
                 </small>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-6"><small>Alamat Email</small></div>
+            <div class="col-4"><small>Alamat Email</small></div>
             <div class="col-1"><small>:</small></div>
-            <div class="col-5">
+            <div class="col-6">
                 <small class="text-grayish">
                     <?php echo "$email"; ?>
                 </small>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-6"><small>Level/Entitas Akses</small></div>
+            <div class="col-4"><small>Level/Entitas Akses</small></div>
             <div class="col-1"><small>:</small></div>
-            <div class="col-5">
+            <div class="col-6">
                 <small class="text-grayish">
                     <?php echo "$akses"; ?>
                 </small>
             </div>
         </div>
         <div class="row mb-3">
-            <div class="col-6"><small>Update</small></div>
+            <div class="col-4"><small>Update</small></div>
             <div class="col-1"><small>:</small></div>
-            <div class="col-5">
+            <div class="col-6">
                 <small class="text-grayish">
                     <?php echo "$datetime_update"; ?>
                 </small>

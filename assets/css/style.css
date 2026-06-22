@@ -171,7 +171,11 @@ html {
     /* Commented out to eliminate scroll stutter and lag in Firefox, supporting instant scroll */
     /* scroll-behavior: smooth; */
     width: 100%;
-    overflow-x: clip;
+    /*
+     * PENTING: overflow-x clip/hidden pada html/body MEMBLOKIR position:sticky!
+     * Gunakan clip-path pada elemen spesifik, bukan overflow pada html/body.
+     * Referensi: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning
+     */
 }
 
 body {
@@ -179,7 +183,7 @@ body {
     min-height: 100vh;
     color: var(--text-dark);
     width: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden DIHAPUS — ini penyebab sticky navbar tidak berfungsi! */
     background: linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
 }
 
@@ -215,14 +219,10 @@ body.dark-mode {
     position: sticky;
     top: 0;
     z-index: 1030;
-    padding: 16px 0 0;
-    /* Hapus shadow bawaan MDB UI Kit pada navbar */
-    box-shadow: none !important;
-}
-
-/* Override shadow MDB pada elemen nav */
-nav.admin-navbar-wrap,
-.navbar.admin-navbar-wrap {
+    padding: 10px 0;
+    /* Background solid agar konten di bawah tidak tembus saat scroll */
+    background: linear-gradient(180deg, var(--page-bg-start) 80%, transparent 100%) !important;
+    /* Shadow DIHAPUS dari sini — dipindah ke .navbar-shell agar hanya di area pill menu */
     box-shadow: none !important;
     -webkit-box-shadow: none !important;
 }
@@ -238,7 +238,8 @@ nav.admin-navbar-wrap,
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.96);
     border: 0;
-    box-shadow: none;
+    /* Shadow kontras hanya pada pill navbar-shell */
+    box-shadow: 0 4px 24px rgba(23, 48, 24, 0.15), 0 1.5px 6px rgba(23, 48, 24, 0.10);
 }
 
 .navbar-brand {
@@ -254,19 +255,25 @@ nav.admin-navbar-wrap,
 .brand-logo {
     width: 42px;
     height: 42px;
+    min-width: 42px;   /* Cegah mengecil saat flex */
+    min-height: 42px;
+    flex-shrink: 0;    /* Jaga ukuran tetap, tidak tertekan flex container */
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    border-radius: 50% !important;  /* Selalu lingkaran */
     background: linear-gradient(135deg, var(--brand-green-soft), var(--brand-green));
     padding: 6px;
     overflow: hidden;
+    aspect-ratio: 1 / 1; /* Paksa rasio persegi agar border-radius 50% sempurna */
 }
 
 .brand-logo img {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 0; /* Biarkan container yang menentukan bentuk */
+    display: block;
 }
 
 .brand-text {
@@ -515,6 +522,18 @@ nav.admin-navbar-wrap,
     border-color: rgba(164, 221, 0, 0.16) !important;
 }
 
+/* Dark mode: navbar background & shadow disesuaikan */
+body.dark-mode .admin-navbar-wrap {
+    background: linear-gradient(180deg, var(--page-bg-start) 80%, transparent 100%) !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+/* Dark mode: shadow pada shell */
+body.dark-mode .navbar-shell {
+    box-shadow: 0 4px 28px rgba(0, 0, 0, 0.42), 0 1.5px 8px rgba(0, 0, 0, 0.26) !important;
+}
+
 .dark-mode .brand-text small,
 .dark-mode .brand-text strong,
 .dark-mode .footer-shell .text-muted,
@@ -585,7 +604,12 @@ nav.admin-navbar-wrap,
 .brand-logo-sm {
     width: 34px;
     height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    flex-shrink: 0;
     padding: 5px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50% !important;
 }
 
 @media (min-width: 992px) {
@@ -600,29 +624,76 @@ nav.admin-navbar-wrap,
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        /* Reset semua efek offcanvas di desktop */
+        width: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .admin-offcanvas .offcanvas-header,
     .admin-offcanvas .offcanvas-body {
         padding: 0;
+        overflow: visible !important;
+    }
+
+    /* Sembunyikan toggler di desktop */
+    .navbar-toggler {
+        display: none !important;
     }
 }
 
+/* =====================================================
+   MOBILE OFFCANVAS — Override konflik MDB UI Kit
+   Bootstrap offcanvas-lg harus berfungsi di bawah lg
+   ===================================================== */
 @media (max-width: 991.98px) {
-    .navbar-shell {
-        border-radius: 1.5rem;
-        flex-wrap: nowrap; /* Jaga brand & toggler tetap 1 baris di mobile */
-        background: rgba(255, 255, 255, 0.96) !important;
+    /* Pastikan offcanvas-lg berperilaku sebagai offcanvas di mobile */
+    #adminNavbar.offcanvas-lg {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: auto !important;
+        width: min(88vw, 320px) !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        overflow-y: auto !important;
+        z-index: 1045 !important;
+        /* Tersembunyi di kanan layar saat tertutup */
+        transform: translateX(100%) !important;
+        transition: transform 0.3s ease-in-out !important;
+        visibility: visible !important;
+        background: rgba(248, 255, 240, 0.99) !important;
+        border-left: 1px solid rgba(164, 221, 0, 0.18) !important;
+        box-shadow: -8px 0 32px rgba(23, 48, 24, 0.12) !important;
     }
 
-    .admin-offcanvas {
-        background: rgba(248, 255, 240, 0.98);
-        border-left: 1px solid rgba(164, 221, 0, 0.18);
-        box-shadow: none;
+    /* Saat offcanvas terbuka — Bootstrap menambahkan .show */
+    #adminNavbar.offcanvas-lg.show,
+    #adminNavbar.offcanvas-lg.showing {
+        transform: translateX(0) !important;
+    }
+
+    /* Saat offcanvas sedang menutup */
+    #adminNavbar.offcanvas-lg.hiding {
+        transform: translateX(100%) !important;
+    }
+
+    .navbar-shell {
+        border-radius: 1.5rem;
+        flex-wrap: nowrap;
+        background: rgba(255, 255, 255, 0.96) !important;
     }
 
     .admin-offcanvas .offcanvas-header {
         border-bottom: 1px solid rgba(164, 221, 0, 0.12);
+        padding: 1rem 1.25rem;
+    }
+
+    .admin-offcanvas .offcanvas-body {
+        padding: 0 !important;
+        overflow-y: auto;
     }
 
     .admin-offcanvas .navbar-nav {
@@ -660,6 +731,12 @@ nav.admin-navbar-wrap,
         right: 1rem;
         bottom: 1rem;
     }
+
+    /* Dark mode mobile offcanvas */
+    body.dark-mode #adminNavbar.offcanvas-lg {
+        background: rgba(15, 25, 16, 0.99) !important;
+        border-left-color: rgba(164, 221, 0, 0.18) !important;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -676,6 +753,17 @@ nav.admin-navbar-wrap,
     .container-fluid {
         padding-left: 1rem;
         padding-right: 1rem;
+    }
+
+    /* Brand text mengecil di layar sangat sempit */
+    .brand-text strong {
+        font-size: 0.82rem;
+        line-height: 1.15;
+    }
+
+    .brand-text small {
+        font-size: 0.68rem;
+        line-height: 1.2;
     }
 }
 
