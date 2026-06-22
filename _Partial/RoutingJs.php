@@ -7,8 +7,8 @@
         $Page=$_GET['Page'];
         // Routing Javascript Berdasarkan Halaman
         $scripts = [
-            "Aksesibilitas"           => "_Page/Aksesibilitas/Aksesibilitas.js",
-            "Aksesibilitas"           => "_Page/Aksesibilitas/Aksesibilitas.js"
+            "MyProfile"     => "_Page/MyProfile/MyProfile.js",
+            "Aksesibilitas" => "_Page/Aksesibilitas/Aksesibilitas.js"
         ];
 
         // Cek apakah halaman ada dalam daftar dan sertakan file JS yang sesuai

@@ -84,15 +84,17 @@
                                 <li><a class="dropdown-item" href="#">Email & WhatsApp Gateway</a></li>
                             </ul>
                         </li>
+
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle <?php if($Page=="MyProfile"){echo "active";} ?>" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-person-circle me-1"></i> Hai, Sol
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                                <li><a class="dropdown-item" href="index.php?Page=MyProfile">My Profile</a></li>
                                 <li><a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#ModalLogout">Logout</a></li>
                             </ul>
                         </li>
+
                     </ul>
                 </div>
             </div>

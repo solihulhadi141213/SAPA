@@ -6,6 +6,7 @@
         
         //Index Halaman
         $page_arry=[
+            "MyProfile"     => "_Page/MyProfile/MyProfile.php",
             "Aksesibilitas" => "_Page/Aksesibilitas/Aksesibilitas.php",
             "Error"         => "_Page/Error/Error.php"
         ];

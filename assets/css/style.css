@@ -23,6 +23,8 @@
     --floating-hover: #1b5e20;
 }
 
+
+
 /* Override Bootstrap Success utilities to align with brand identity */
 .btn-success {
     background-color: var(--brand-primary) !important;
@@ -168,14 +170,29 @@
 html {
     /* Commented out to eliminate scroll stutter and lag in Firefox, supporting instant scroll */
     /* scroll-behavior: smooth; */
+    width: 100%;
+    overflow-x: clip;
 }
 
 body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     color: var(--text-dark);
+    width: 100%;
     overflow-x: hidden;
     background: linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+    max-width: 100%;
 }
 
 body.dark-mode {
@@ -212,6 +229,7 @@ nav.admin-navbar-wrap,
 
 .navbar-shell {
     width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: center;
     flex-wrap: nowrap; /* Pastikan brand & toggler selalu 1 baris */
@@ -221,6 +239,16 @@ nav.admin-navbar-wrap,
     background: rgba(255, 255, 255, 0.96);
     border: 0;
     box-shadow: none;
+}
+
+.navbar-brand {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.navbar-brand,
+.brand-text {
+    min-width: 0;
 }
 
 .brand-logo {
@@ -245,10 +273,19 @@ nav.admin-navbar-wrap,
     display: flex;
     flex-direction: column;
     line-height: 1.1;
+    overflow: hidden;
 }
 
 .brand-text small {
     color: rgba(23, 48, 24, 0.7);
+}
+
+.brand-text strong,
+.brand-text small {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .navbar-nav .nav-link {
@@ -703,8 +740,9 @@ nav.admin-navbar-wrap,
 }
 
 .image-my-profile{
-    width: 320px;
-    height: 320px;
+    width: min(320px, 100%);
+    aspect-ratio: 1 / 1;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
@@ -718,8 +756,9 @@ nav.admin-navbar-wrap,
    FOTO PROFILE
 ======================================================= */
 .header-profile{
-    width: 220px;
-    height: 220px;
+    width: min(220px, 100%);
+    aspect-ratio: 1 / 1;
+    height: auto;
 
     object-fit: cover;
 
@@ -847,4 +886,36 @@ nav.admin-navbar-wrap,
     .modal-body{
         padding: 20px;
     }
+
+    .image-my-profile {
+        max-width: 240px;
+    }
+}
+
+/* =======================================================
+   grayish
+======================================================= */
+.text-grayish{
+  color: #a7a7a7;
+}
+
+/*--------------------------------------------------------------
+# Page Title
+--------------------------------------------------------------*/
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #73f00c;
+}
+
+.pagetitle h1 a {
+  font-size: 18px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #56b409;
 }

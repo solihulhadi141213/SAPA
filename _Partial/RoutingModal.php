@@ -5,7 +5,8 @@
         
         // Daftar halaman dan modal yang terkait
         $modals = [
-            "Aksesibilitas"      => "_Page/Aksesibilitas/ModalAksesibilitas.php",
+            "MyProfile"     => "_Page/MyProfile/ModalMyProfile.php",
+            "Aksesibilitas" => "_Page/Aksesibilitas/ModalAksesibilitas.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya

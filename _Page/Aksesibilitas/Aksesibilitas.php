@@ -1,3 +1,14 @@
+<div class="pagetitle">
+    <h1>
+        <a href=""><i class="bi bi-people"></i> Aksesibilitas</a></a>
+    </h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
+            <li class="breadcrumb-item active"> Aksesibilitas</li>
+        </ol>
+    </nav>
+</div>
 <section class="hero-panel mb-4">
     <div class="row align-items-center g-4 mb-3">
         <div class="col-8">
