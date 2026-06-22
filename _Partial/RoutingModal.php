@@ -8,6 +8,7 @@
             "MyProfile"      => "_Page/MyProfile/ModalMyProfile.php",
             "Aksesibilitas"  => "_Page/Aksesibilitas/ModalAksesibilitas.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
+            "KoneksiSimrs"   => "_Page/KoneksiSimrs/ModalKoneksiSimrs.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya

@@ -24,25 +24,11 @@
 
         // Routing Title By Page
         $list_halaman = [
-            "MyProfile"           => "Profile Saya",
-            "Profile"             => "Profile",
-            "Setting"             => "Setting",
-            "ApiKey"              => "API Key",
-            "EmailGateway"        => "Email Gateway",
-            "AksesFitur"          => "Fitur Aplikasi",
-            "AksesEntitas"        => "Entitas Akses",
-            "Akses"               => "Akses Pengguna",
-            "Anggota"             => "Anggota",
-            "JenisSimpanan"       => "Jenis Simpanan",
-            "JenisPinjaman"       => "Jenis Pinjaman",
-            "Supplier"            => "Supplier",
-            "KategoriHarga"       => "Kategori Harga",
-            "Barang"              => "Master Barang",
-            "BatchExpired"        => "Batch & Expired",
-            "Diskon"              => "Diskon",
-            "StockOpename"        => "Stock Opename",
-            "SettingGeneral"      => "Pengaturan Umum",
-            "SettingEmailGateway" => "Email Gateway",
+            "MyProfile"      => "Profile Saya",
+            "Aksesibilitas"  => "Aksesibilitas",
+            "Profile"        => "Profile",
+            "SettingGeneral" => "Pengaturan Umum",
+            "KoneksiSimrs"   => "Koneksi Simrs",
         ];
         
         // Init Page Title

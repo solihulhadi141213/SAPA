@@ -10,6 +10,7 @@
             "MyProfile"      => "_Page/MyProfile/MyProfile.js",
             "Aksesibilitas"  => "_Page/Aksesibilitas/Aksesibilitas.js",
             "SettingGeneral" => "_Page/SettingGeneral/SettingGeneral.js",
+            "KoneksiSimrs"   => "_Page/KoneksiSimrs/KoneksiSimrs.js",
         ];
 
         // Cek apakah halaman ada dalam daftar dan sertakan file JS yang sesuai

@@ -67,7 +67,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-check"></i> Tampilkan
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -146,7 +146,7 @@
                     <button type="submit" class="btn btn-primary" id="ButtonTambah">
                         <i class="bi bi-save"></i> Simpan
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -189,7 +189,7 @@
                     <button type="submit" class="btn btn-primary" id="ButtonEdit">
                         <i class="bi bi-save"></i> Simpan
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -223,7 +223,7 @@
                     <button type="submit" class="btn btn-primary" id="ButtonEditFoto">
                         <i class="bi bi-save"></i> Simpan
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -258,7 +258,7 @@
                     <button type="submit" class="btn btn-primary" id="ButtonEditPassword">
                         <i class="bi bi-save"></i> Simpan
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>
@@ -292,7 +292,7 @@
                     <button type="submit" class="btn btn-primary" id="ButtonHapus">
                         <i class="bi bi-check"></i> Ya, Hapus
                     </button>
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle"></i> Tutup
                     </button>
                 </div>

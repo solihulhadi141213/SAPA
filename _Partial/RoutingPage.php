@@ -9,6 +9,7 @@
             "MyProfile"      => "_Page/MyProfile/MyProfile.php",
             "Aksesibilitas"  => "_Page/Aksesibilitas/Aksesibilitas.php",
             "SettingGeneral" => "_Page/SettingGeneral/SettingGeneral.php",
+            "KoneksiSimrs"   => "_Page/KoneksiSimrs/KoneksiSimrs.php",
             "Error"          => "_Page/Error/Error.php"
         ];
 
