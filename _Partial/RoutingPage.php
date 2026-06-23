@@ -10,6 +10,7 @@
             "Aksesibilitas"  => "_Page/Aksesibilitas/Aksesibilitas.php",
             "SettingGeneral" => "_Page/SettingGeneral/SettingGeneral.php",
             "KoneksiSimrs"   => "_Page/KoneksiSimrs/KoneksiSimrs.php",
+            "EmailGateway"   => "_Page/EmailGateway/EmailGateway.php",
             "Error"          => "_Page/Error/Error.php"
         ];
 

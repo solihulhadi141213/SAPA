@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 22, 2026 at 09:12 PM
+-- Generation Time: Jun 23, 2026 at 02:58 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `setting_email_gateway` (
   `port_gateway` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `nama_pengirim` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `url_service` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_setting_email_gateway`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

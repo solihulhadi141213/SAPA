@@ -29,6 +29,7 @@
             "Profile"        => "Profile",
             "SettingGeneral" => "Pengaturan Umum",
             "KoneksiSimrs"   => "Koneksi Simrs",
+            "EmailGateway"   => "Email Gateway",
         ];
         
         // Init Page Title

@@ -40,15 +40,11 @@
                                 <i class="bi bi-speedometer2 me-1"></i>Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link <?php if($Page=="Aksesibilitas"){echo "active";} ?>" href="index.php?Page=Aksesibilitas">
-                                <i class="bi bi-people me-1"></i>Aksesibilitas
-                            </a>
-                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle 
                                 <?php 
                                     if(
+                                        $Page=="Responden"||
                                         $Page=="SesiSurvey"||
                                         $Page=="Pertanyaan"||
                                         $Page=="Jawaban"
@@ -58,6 +54,7 @@
                                 <i class="bi bi-journal-text me-1"></i>Survei
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Responden</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="SesiSurvey"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Sesi Survei</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Pertanyaan"){echo "active";}  ?>" href="index.php?Page=Pertanyaan">Daftar Pertanyaan</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban Responden</a></li>
@@ -65,7 +62,7 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-people-fill me-1"></i>Responden
+                                <i class="bi bi-file-earmark-text me-1"></i>Laporan
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
                                 <li><a class="dropdown-item" href="#">Daftar Responden</a></li>
@@ -77,6 +74,7 @@
                             <a class="nav-link dropdown-toggle 
                             <?php 
                                 if(
+                                    $Page=="Aksesibilitas"||
                                     $Page=="SettingGeneral"||
                                     $Page=="KoneksiSimrs"||
                                     $Page=="EmailGateway"||
@@ -87,6 +85,7 @@
                                 <i class="bi bi-gear me-1"></i>Setting
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <li><a class="dropdown-item <?php if($Page=="Aksesibilitas"){echo "active";}  ?>" href="index.php?Page=Aksesibilitas">Akses</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="SettingGeneral"){echo "active";}  ?>" href="index.php?Page=SettingGeneral">Pengaturan Umum</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="KoneksiSimrs"){echo "active";}  ?>" href="index.php?Page=KoneksiSimrs">Koneksi SIMRS</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="EmailGateway"){echo "active";}  ?>" href="index.php?Page=EmailGateway">Email Gateway</a></li>
@@ -96,7 +95,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle <?php if($Page=="MyProfile"){echo "active";} ?>" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle me-1"></i> Hai, Sol
+                                <i class="bi bi-person-circle me-1"></i> Saya
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
                                 <li><a class="dropdown-item" href="index.php?Page=MyProfile">My Profile</a></li>

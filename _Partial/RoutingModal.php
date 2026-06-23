@@ -9,6 +9,7 @@
             "Aksesibilitas"  => "_Page/Aksesibilitas/ModalAksesibilitas.php",
             "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
             "KoneksiSimrs"   => "_Page/KoneksiSimrs/ModalKoneksiSimrs.php",
+            "EmailGateway"   => "_Page/EmailGateway/ModalEmailGateway.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya
