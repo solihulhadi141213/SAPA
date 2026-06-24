@@ -24,12 +24,13 @@
 
         // Routing Title By Page
         $list_halaman = [
-            "MyProfile"      => "Profile Saya",
-            "Aksesibilitas"  => "Aksesibilitas",
-            "Profile"        => "Profile",
-            "SettingGeneral" => "Pengaturan Umum",
-            "KoneksiSimrs"   => "Koneksi Simrs",
-            "EmailGateway"   => "Email Gateway",
+            "MyProfile"       => "Profile Saya",
+            "Aksesibilitas"   => "Aksesibilitas",
+            "Profile"         => "Profile",
+            "SettingGeneral"  => "Pengaturan Umum",
+            "KoneksiSimrs"    => "Koneksi Simrs",
+            "EmailGateway"    => "Email Gateway",
+            "WahtsappGateway" => "Whatsapp Gateway",
         ];
         
         // Init Page Title

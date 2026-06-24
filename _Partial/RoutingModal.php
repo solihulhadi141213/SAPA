@@ -5,11 +5,12 @@
         
         // Daftar halaman dan modal yang terkait
         $modals = [
-            "MyProfile"      => "_Page/MyProfile/ModalMyProfile.php",
-            "Aksesibilitas"  => "_Page/Aksesibilitas/ModalAksesibilitas.php",
-            "SettingGeneral" => "_Page/SettingGeneral/ModalSettingGeneral.php",
-            "KoneksiSimrs"   => "_Page/KoneksiSimrs/ModalKoneksiSimrs.php",
-            "EmailGateway"   => "_Page/EmailGateway/ModalEmailGateway.php",
+            "MyProfile"       => "_Page/MyProfile/ModalMyProfile.php",
+            "Aksesibilitas"   => "_Page/Aksesibilitas/ModalAksesibilitas.php",
+            "SettingGeneral"  => "_Page/SettingGeneral/ModalSettingGeneral.php",
+            "KoneksiSimrs"    => "_Page/KoneksiSimrs/ModalKoneksiSimrs.php",
+            "EmailGateway"    => "_Page/EmailGateway/ModalEmailGateway.php",
+            "WahtsappGateway" => "_Page/WahtsappGateway/ModalWahtsappGateway.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya

@@ -6,12 +6,13 @@
         
         //Index Halaman
         $page_arry=[
-            "MyProfile"      => "_Page/MyProfile/MyProfile.php",
-            "Aksesibilitas"  => "_Page/Aksesibilitas/Aksesibilitas.php",
-            "SettingGeneral" => "_Page/SettingGeneral/SettingGeneral.php",
-            "KoneksiSimrs"   => "_Page/KoneksiSimrs/KoneksiSimrs.php",
-            "EmailGateway"   => "_Page/EmailGateway/EmailGateway.php",
-            "Error"          => "_Page/Error/Error.php"
+            "MyProfile"       => "_Page/MyProfile/MyProfile.php",
+            "Aksesibilitas"   => "_Page/Aksesibilitas/Aksesibilitas.php",
+            "SettingGeneral"  => "_Page/SettingGeneral/SettingGeneral.php",
+            "KoneksiSimrs"    => "_Page/KoneksiSimrs/KoneksiSimrs.php",
+            "EmailGateway"    => "_Page/EmailGateway/EmailGateway.php",
+            "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.php",
+            "Error"           => "_Page/Error/Error.php"
         ];
 
         //Tangkap 'Page'

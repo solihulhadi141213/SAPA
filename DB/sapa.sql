@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 23, 2026 at 02:58 PM
+-- Generation Time: Jun 24, 2026 at 04:06 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -146,8 +146,7 @@ CREATE TABLE IF NOT EXISTS `setting_wa` (
   `id_setting_wa` int NOT NULL AUTO_INCREMENT,
   `url_service` varchar(255) NOT NULL,
   `api_key` varchar(255) NOT NULL,
-  `max_account` int NOT NULL,
-  `max_connection` int NOT NULL COMMENT 'Dalam satuan detik',
+  `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_setting_wa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

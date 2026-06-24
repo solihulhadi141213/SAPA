@@ -1,13 +1,30 @@
 //Fungsi Menampilkan Data
 function ShowConnectionTable() {
+    $('#tabel_whatsapp_gateway').html('<tr><td colspan="5" class="text-center">Loading...</td></tr>');
     $.ajax({
         type    : 'POST',
-        url     : '_Page/EmailGateway/TabelEmailGateway.php',
+        url     : '_Page/WahtsappGateway/TabelWahtsappGateway.php',
         success: function(data) {
-            $('#tabel_email_gateway').html(data);
+            $('#tabel_whatsapp_gateway').html(data);
             
             // 🔁 Re-inisialisasi tooltip setelah data dimuat
             $('[data-bs-toggle="tooltip"]').tooltip();
+        }
+    });
+}
+
+// Fungsi Menampilkan Detail
+function ShowDetail(id_setting_wa){
+    //Form Loading
+    $('#FormDetail').html('Loading...');
+
+    //Tampilkan Form Dengan Ajax
+    $.ajax({
+        type 	    : 'POST',
+        url 	    : '_Page/WahtsappGateway/FormDetail.php',
+        data        : {id_setting_wa: id_setting_wa},
+        success     : function(data){
+            $('#FormDetail').html(data);
         }
     });
 }
@@ -31,7 +48,7 @@ $(document).ready(function() {
     // Modal Tambah
     $('#ModalTambah').on('shown.bs.modal', function () {
         // Auto Focus
-        $('#email_gateway').trigger('focus');
+        $('#url_service').trigger('focus');
     });
 
     /* Ketika 'ProsesTambah' disubmit */
@@ -46,7 +63,7 @@ $(document).ready(function() {
         /* Kirim data dengan AJAX  */
         $.ajax({
             type    : 'POST',
-            url     : '_Page/EmailGateway/ProsesTambah.php',
+            url     : '_Page/WahtsappGateway/ProsesTambah.php',
             dataType: 'json',
             data    : ProsesTambah,
             success: function(response) {
@@ -67,7 +84,7 @@ $(document).ready(function() {
                     //Menampilkan Swal
                     Swal.fire(
                         'Success!',
-                        'Tambah Koneksi Email Gateway Berhasil!',
+                        'Tambah Koneksi Whatsapp Gateway Berhasil!',
                         'success'
                     )
 
@@ -84,77 +101,64 @@ $(document).ready(function() {
     /* MODAL DETAIL */
     $(document).on('click', '.modal_detail', function () {
 
-        //tangkap data 'id_setting_email_gateway' dan buat variabel
-        var id_setting_email_gateway   = $(this).data('id');
+        //tangkap data 'id_setting_wa' dan buat variabel
+        var id_setting_wa   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalDetail').modal('show');
 
-        //Form Loading
-        $('#FormDetail').html('Loading...');
-
-        //Tampilkan Form Dengan Ajax
-        $.ajax({
-            type 	    : 'POST',
-            url 	    : '_Page/EmailGateway/FormDetail.php',
-            data        : {id_setting_email_gateway: id_setting_email_gateway},
-            success     : function(data){
-                $('#FormDetail').html(data);
-            }
-        });
+        // Show Detail
+        ShowDetail(id_setting_wa);
+        
     });
 
-    /* MODAL KIRIM EMAIL */
-    $(document).on('click', '.modal_kirim_email', function () {
-
-        //tangkap data 'id_setting_email_gateway' dan buat variabel
-        var id_setting_email_gateway   = $(this).data('id');
-
-        //tampilkan modal
-        $('#ModalKirimEmail').modal('show');
-
-        // Kosongkan Notifikasi
-        $('#NotifikasiKirimEmail').html('');
-
-        //Form Loading
-        $('#FormKirimEmail').html('Loading...');
-
-        //Tampilkan Form Dengan Ajax
-        $.ajax({
-            type 	    : 'POST',
-            url 	    : '_Page/EmailGateway/FormKirimEmail.php',
-            data        : {id_setting_email_gateway: id_setting_email_gateway},
-            success     : function(data){
-                $('#FormKirimEmail').html(data);
-            }
-        });
-    });
-
-    /* Ketika 'ModalKirimEmail' disubmit */
-    $('#ProsesKirimEmail').submit(function(){
+    /* Ketika 'ProsesDetail' disubmit */
+    $('#ProsesDetail').submit(function(){
        
-        /* Menangkap data dari form  */
-        var ProsesKirimEmail=$('#ProsesKirimEmail').serialize();
+        //tangkap data 'id_setting_wa' dan buat variabel
+        var id_setting_wa   = $('#put_id_setting_wa').val();
 
-        /* Loading Notification */
-        $('#NotifikasiKirimEmail').html('loading..');
+        // Show Detail
+        ShowDetail(id_setting_wa);
+    });
+
+    // Ketika "button_disconnect" di click
+    $(document).on('click', '.button_disconnect', function () {
+
+        //tangkap data 'id_setting_wa' dan buat variabel
+        var id_setting_wa   = $(this).data('id');
+
+        // Ambil Element Button
+        let button_element = $('.button_disconnect').html();
+
+        // Loading Button
+        $('.button_disconnect').html('Menghapus Perangkat ...');
 
         /* Kirim data dengan AJAX  */
         $.ajax({
             type    : 'POST',
-            url     : '_Page/EmailGateway/ProsesKirimEmail.php',
-            data    : ProsesKirimEmail,
+            url     : '_Page/WahtsappGateway/ProsesDisconnect.php',
+            data    : {id_setting_wa : id_setting_wa},
             success: function(response) {
-                $('#NotifikasiKirimEmail').html(response);
+                
+                let status = response.status;
+                var message = response.message;
+                if(status=='success'){
+                    ShowDetail(id_setting_wa);
+                }else{
+                    $('.button_disconnect').html(button_element);
+                    $('.notifikasi_disconnection').html('<div class="alert alert-danger text-center">'+message+'</div>');
+                }
             }
         });
+        
     });
 
     /* MODAL EDIT */
     $(document).on('click', '.modal_edit', function () {
 
-        //tangkap data 'id_setting_email_gateway' dan buat variabel
-        var id_setting_email_gateway   = $(this).data('id');
+        //tangkap data 'id_setting_wa' dan buat variabel
+        var id_setting_wa   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalEdit').modal('show');
@@ -168,8 +172,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/EmailGateway/FormEdit.php',
-            data        : {id_setting_email_gateway: id_setting_email_gateway},
+            url 	    : '_Page/WahtsappGateway/FormEdit.php',
+            data        : {id_setting_wa: id_setting_wa},
             success     : function(data){
                 $('#FormEdit').html(data);
             }
@@ -188,7 +192,7 @@ $(document).ready(function() {
         /* Kirim data dengan AJAX  */
         $.ajax({
             type    : 'POST',
-            url     : '_Page/EmailGateway/ProsesEdit.php',
+            url     : '_Page/WahtsappGateway/ProsesEdit.php',
             dataType: 'json',
             data    : ProsesEdit,
             success: function(response) {
@@ -209,7 +213,7 @@ $(document).ready(function() {
                     // Menampilkan Swal
                     Swal.fire(
                         'Success!',
-                        'Edit Koneksi Email Gateway Berhasil!',
+                        'Edit Koneksi Whatsapp Gateway Berhasil!',
                         'success'
                     )
                 }else{
@@ -223,8 +227,8 @@ $(document).ready(function() {
     /* MODAL DELETE */
     $(document).on('click', '.modal_delete', function () {
 
-        //tangkap data 'id_setting_email_gateway' dan buat variabel
-        var id_setting_email_gateway   = $(this).data('id');
+        //tangkap data 'id_setting_wa' dan buat variabel
+        var id_setting_wa   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalDelete').modal('show');
@@ -238,8 +242,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/EmailGateway/FormDelete.php',
-            data        : {id_setting_email_gateway: id_setting_email_gateway},
+            url 	    : '_Page/WahtsappGateway/FormDelete.php',
+            data        : {id_setting_wa: id_setting_wa},
             success     : function(data){
                 $('#FormDelete').html(data);
             }
@@ -258,7 +262,7 @@ $(document).ready(function() {
         /* Kirim data dengan AJAX  */
         $.ajax({
             type    : 'POST',
-            url     : '_Page/EmailGateway/ProsesDelete.php',
+            url     : '_Page/WahtsappGateway/ProsesDelete.php',
             dataType: 'json',
             data    : ProsesDelete,
             success: function(response) {
@@ -279,7 +283,7 @@ $(document).ready(function() {
                     // Menampilkan Swal
                     Swal.fire(
                         'Success!',
-                        'Hapus Koneksi Email Gateway Berhasil!',
+                        'Hapus Koneksi Whatsapp Gateway Berhasil!',
                         'success'
                     )
                 }else{
