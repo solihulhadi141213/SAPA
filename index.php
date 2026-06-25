@@ -31,6 +31,7 @@
             "KoneksiSimrs"    => "Koneksi Simrs",
             "EmailGateway"    => "Email Gateway",
             "WahtsappGateway" => "Whatsapp Gateway",
+            "Responden"       => "Responden",
         ];
         
         // Init Page Title

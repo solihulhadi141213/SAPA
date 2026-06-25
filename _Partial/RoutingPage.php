@@ -12,6 +12,7 @@
             "KoneksiSimrs"    => "_Page/KoneksiSimrs/KoneksiSimrs.php",
             "EmailGateway"    => "_Page/EmailGateway/EmailGateway.php",
             "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.php",
+            "Responden"       => "_Page/Responden/Responden.php",
             "Error"           => "_Page/Error/Error.php"
         ];
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 24, 2026 at 04:06 PM
+-- Generation Time: Jun 25, 2026 at 05:00 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -66,11 +66,13 @@ CREATE TABLE IF NOT EXISTS `akses_login` (
 DROP TABLE IF EXISTS `respondent`;
 CREATE TABLE IF NOT EXISTS `respondent` (
   `id_respondent` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_pasien` int UNSIGNED NOT NULL,
+  `id_kunjungan` int UNSIGNED NOT NULL,
   `respondent_name` varchar(255) NOT NULL COMMENT 'Nama lengkap responden',
-  `respondent_id_type` varchar(255) NOT NULL COMMENT 'No RM, NIK, BPJS DLL',
-  `respondent_id_value` varchar(255) NOT NULL COMMENT 'Nilai dari nomor identitas yang digunakan',
   `respondent_sex` enum('Male','Female') NOT NULL,
   `respondent_brithdate` date DEFAULT NULL,
+  `tanggal_kunjungan` datetime NOT NULL,
+  `kunjungan_tujuan` enum('Rajal','Ranap') NOT NULL,
   PRIMARY KEY (`id_respondent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -131,6 +133,8 @@ CREATE TABLE IF NOT EXISTS `setting_simrs` (
   `url_simrs` varchar(255) NOT NULL,
   `client_id` char(36) NOT NULL,
   `client_key` char(36) NOT NULL,
+  `token` varchar(255) DEFAULT NULL,
+  `datetime_expired` datetime DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_setting_simrs`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

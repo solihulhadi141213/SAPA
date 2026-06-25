@@ -54,7 +54,7 @@
                                 <i class="bi bi-journal-text me-1"></i>Survei
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Responden</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=Responden">Responden</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="SesiSurvey"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Sesi Survei</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Pertanyaan"){echo "active";}  ?>" href="index.php?Page=Pertanyaan">Daftar Pertanyaan</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban Responden</a></li>
@@ -65,9 +65,9 @@
                                 <i class="bi bi-file-earmark-text me-1"></i>Laporan
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item" href="#">Daftar Responden</a></li>
-                                <li><a class="dropdown-item" href="#">Kirim Tautan</a></li>
-                                <li><a class="dropdown-item" href="#">Riwayat Undangan</a></li>
+                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Daftar Responden</a></li>
+                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Kirim Tautan</a></li>
+                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Riwayat Undangan</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

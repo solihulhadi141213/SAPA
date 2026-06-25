@@ -4,6 +4,11 @@
             <span class="badge rounded-pill text-bg-success-subtle border border-success-subtle text-success mb-3">Dashboard</span>
             <h1 class="display-6 fw-bold mb-3"><?php echo $company_name; ?></h1>
             <p class="lead mb-4"><?php echo $company_address; ?></p>
+            <small>
+                <a href="https://spot-sable-36328494.figma.site">
+                    Lihat Cara Kerja Sistem <i class="bi bi-chevron-compact-right"></i>
+                </a>
+            </small>
         </div>
     </div>
 </section>
