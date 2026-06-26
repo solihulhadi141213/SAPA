@@ -14,6 +14,7 @@
             "EmailGateway"    => "_Page/EmailGateway/EmailGateway.js",
             "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.js",
             "Responden"       => "_Page/Responden/Responden.js",
+            "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.js",
         ];
 
         // Cek apakah halaman ada dalam daftar dan sertakan file JS yang sesuai

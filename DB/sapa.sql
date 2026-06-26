@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 25, 2026 at 05:00 PM
+-- Generation Time: Jun 25, 2026 at 09:24 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `respondent` (
   `respondent_brithdate` date DEFAULT NULL,
   `tanggal_kunjungan` datetime NOT NULL,
   `kunjungan_tujuan` enum('Rajal','Ranap') NOT NULL,
+  `no_kontak` varchar(255) NOT NULL,
   PRIMARY KEY (`id_respondent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -163,12 +164,12 @@ CREATE TABLE IF NOT EXISTS `setting_wa` (
 DROP TABLE IF EXISTS `survey_answer`;
 CREATE TABLE IF NOT EXISTS `survey_answer` (
   `id_survey_answer` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id_survey_session` int UNSIGNED NOT NULL,
   `id_survey_question` int UNSIGNED NOT NULL,
-  `answer_text` text NOT NULL,
+  `id_respondent` int UNSIGNED NOT NULL,
+  `answer_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   PRIMARY KEY (`id_survey_answer`),
-  KEY `answer_to_session` (`id_survey_session`),
-  KEY `answer_to_question` (`id_survey_question`)
+  KEY `answer_to_question` (`id_survey_question`),
+  KEY `answer_to_respondent` (`id_respondent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -180,12 +181,13 @@ CREATE TABLE IF NOT EXISTS `survey_answer` (
 DROP TABLE IF EXISTS `survey_question`;
 CREATE TABLE IF NOT EXISTS `survey_question` (
   `id_survey_question` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id_survey_session` int UNSIGNED NOT NULL,
+  `question_order` int UNSIGNED NOT NULL COMMENT 'Nomor urut',
   `question_type` enum('number','decimal','text','coded','boolean') NOT NULL,
+  `mandatory` tinyint(1) NOT NULL,
   `question_text` text NOT NULL COMMENT 'Text pertanyaan',
   `alternative_answers` json DEFAULT NULL COMMENT 'Alternatif jawaban',
-  PRIMARY KEY (`id_survey_question`),
-  KEY `question_session` (`id_survey_session`)
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_survey_question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -218,13 +220,7 @@ ALTER TABLE `akses_login`
 --
 ALTER TABLE `survey_answer`
   ADD CONSTRAINT `answer_to_question` FOREIGN KEY (`id_survey_question`) REFERENCES `survey_question` (`id_survey_question`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `answer_to_session` FOREIGN KEY (`id_survey_session`) REFERENCES `survey_session` (`id_survey_session`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `survey_question`
---
-ALTER TABLE `survey_question`
-  ADD CONSTRAINT `question_session` FOREIGN KEY (`id_survey_session`) REFERENCES `survey_session` (`id_survey_session`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `answer_to_respondent` FOREIGN KEY (`id_respondent`) REFERENCES `respondent` (`id_respondent`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

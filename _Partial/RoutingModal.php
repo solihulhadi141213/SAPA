@@ -12,6 +12,7 @@
             "EmailGateway"    => "_Page/EmailGateway/ModalEmailGateway.php",
             "WahtsappGateway" => "_Page/WahtsappGateway/ModalWahtsappGateway.php",
             "Responden"       => "_Page/Responden/ModalResponden.php",
+            "Pertanyaan"      => "_Page/Pertanyaan/ModalPertanyaan.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya

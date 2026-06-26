@@ -32,6 +32,7 @@
             "EmailGateway"    => "Email Gateway",
             "WahtsappGateway" => "Whatsapp Gateway",
             "Responden"       => "Responden",
+            "Pertanyaan"       => "Daftar Pertanyaan",
         ];
         
         // Init Page Title
