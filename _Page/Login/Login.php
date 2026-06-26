@@ -76,7 +76,12 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password" required>
+                                        <button type="button" class="btn btn-outline-secondary" id="togglePassword" aria-label="Tampilkan password">
+                                            <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                                        </button>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="captcha" class="form-label">Captcha</label>
@@ -131,13 +136,17 @@
                 $('#image_captcha').attr('src', '_Config/Captcha.php?' + Date.now());
             });
 
-            //Kondisi saat tampilkan password
-            $('#TampilkanPassword2').click(function(){
-                if($(this).is(':checked')){
-                    $('#password').attr('type','text');
-                }else{
-                    $('#password').attr('type','password');
-                }
+            // Toggle tampilkan password
+            $('#togglePassword').on('click', function(){
+                const input = $('#password');
+                const icon = $('#togglePasswordIcon');
+                const isPassword = input.attr('type') === 'password';
+
+                input.attr('type', isPassword ? 'text' : 'password');
+                icon.removeClass('bi-eye bi-eye-slash')
+                    .addClass(isPassword ? 'bi-eye-slash' : 'bi-eye');
+
+                $(this).attr('aria-label', isPassword ? 'Sembunyikan password' : 'Tampilkan password');
             });
 
             //Submit Login
