@@ -15,6 +15,7 @@
             "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.js",
             "Responden"       => "_Page/Responden/Responden.js",
             "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.js",
+            "Undangan"        => "_Page/Undangan/Undangan.js",
         ];
 
         // Cek apakah halaman ada dalam daftar dan sertakan file JS yang sesuai

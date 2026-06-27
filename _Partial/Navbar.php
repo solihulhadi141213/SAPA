@@ -45,8 +45,8 @@
                                 <?php 
                                     if(
                                         $Page=="Responden"||
-                                        $Page=="SesiSurvey"||
                                         $Page=="Pertanyaan"||
+                                        $Page=="Undangan"||
                                         $Page=="Jawaban"
                                     ){echo "active";} 
                                 ?>
@@ -54,9 +54,9 @@
                                 <i class="bi bi-journal-text me-1"></i>Survei
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=Responden">Responden</a></li>
-                                <li><a class="dropdown-item <?php if($Page=="SesiSurvey"){echo "active";}  ?>" href="index.php?Page=SesiSurvey">Sesi Survei</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Pertanyaan"){echo "active";}  ?>" href="index.php?Page=Pertanyaan">Daftar Pertanyaan</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=Responden">Responden</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Undangan"){echo "active";}  ?>" href="index.php?Page=Undangan">Undangan</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban Responden</a></li>
                             </ul>
                         </li>

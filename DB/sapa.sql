@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 25, 2026 at 09:24 PM
+-- Generation Time: Jun 27, 2026 at 06:01 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -175,6 +175,26 @@ CREATE TABLE IF NOT EXISTS `survey_answer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `survey_log`
+--
+
+DROP TABLE IF EXISTS `survey_log`;
+CREATE TABLE IF NOT EXISTS `survey_log` (
+  `id_survey_log` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `id_respondent` int UNSIGNED NOT NULL,
+  `invitation_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT 'Token unik untuk akses halaman form',
+  `datetime_invitation` datetime NOT NULL,
+  `method_invitation` enum('Whatsapp','Email','Manual') NOT NULL,
+  `no_wa` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `answer` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id_survey_log`),
+  KEY `invitation_to_responden` (`id_respondent`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Catatan pengiriman undangan survey';
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `survey_question`
 --
 
@@ -221,6 +241,12 @@ ALTER TABLE `akses_login`
 ALTER TABLE `survey_answer`
   ADD CONSTRAINT `answer_to_question` FOREIGN KEY (`id_survey_question`) REFERENCES `survey_question` (`id_survey_question`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `answer_to_respondent` FOREIGN KEY (`id_respondent`) REFERENCES `respondent` (`id_respondent`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `survey_log`
+--
+ALTER TABLE `survey_log`
+  ADD CONSTRAINT `invitation_to_responden` FOREIGN KEY (`id_respondent`) REFERENCES `respondent` (`id_respondent`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -14,6 +14,7 @@
             "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.php",
             "Responden"       => "_Page/Responden/Responden.php",
             "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.php",
+            "Undangan"        => "_Page/Undangan/Undangan.php",
             "Error"           => "_Page/Error/Error.php"
         ];
 
