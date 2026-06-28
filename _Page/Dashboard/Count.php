@@ -21,8 +21,12 @@
         "jumlah_responden"   => "0",
         "jumlah_undangan"    => "0",
         "jumlah_jawaban"     => "0",
-        "chart_labels"       => [],
-        "chart_series"       => []
+        "chart_gap_labels"   => [],
+        "chart_gap_series"   => [],
+        "chart_gender_labels" => [],
+        "chart_gender_series" => [],
+        "chart_encounter_labels" => [],
+        "chart_encounter_series" => []
     ];
 
     $queries = [
@@ -121,6 +125,119 @@
 
     $response['chart_labels'] = array_values($chartLabels);
     $response['chart_series'] = array_values($chartSeries);
+
+    // =========================================================
+    // GAP PARTISIPASI RESPONDEN
+    // =========================================================
+    $stmtGap = $Conn->prepare("
+        SELECT
+            COUNT(*) AS total_responden,
+            SUM(CASE WHEN sl.answer = 1 THEN 1 ELSE 0 END) AS total_menjawab
+        FROM respondent r
+        LEFT JOIN survey_log sl ON sl.id_respondent = r.id_respondent
+    ");
+    if (!$stmtGap) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mempersiapkan data gap partisipasi."
+        ]);
+        exit;
+    }
+    if (!$stmtGap->execute()) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mengambil data gap partisipasi."
+        ]);
+        $stmtGap->close();
+        exit;
+    }
+    $resultGap = $stmtGap->get_result();
+    $rowGap = $resultGap ? $resultGap->fetch_assoc() : [];
+    $stmtGap->close();
+
+    $totalResponden = (int)($rowGap['total_responden'] ?? 0);
+    $totalMenjawab = (int)($rowGap['total_menjawab'] ?? 0);
+    $response['chart_gap_labels'] = ['Belum Menjawab', 'Sudah Menjawab'];
+    $response['chart_gap_series'] = [
+        max(0, $totalResponden - $totalMenjawab),
+        $totalMenjawab
+    ];
+
+    // =========================================================
+    // GENDER RESPONDEN
+    // =========================================================
+    $response['chart_gender_labels'] = ['Pria', 'Wanita'];
+    $response['chart_gender_series'] = [0, 0];
+
+    $stmtGender = $Conn->prepare("
+        SELECT respondent_sex, COUNT(*) AS total
+        FROM respondent
+        GROUP BY respondent_sex
+    ");
+    if (!$stmtGender) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mempersiapkan data gender."
+        ]);
+        exit;
+    }
+    if (!$stmtGender->execute()) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mengambil data gender."
+        ]);
+        $stmtGender->close();
+        exit;
+    }
+    $resultGender = $stmtGender->get_result();
+    while ($row = $resultGender->fetch_assoc()) {
+        $sex = (string)($row['respondent_sex'] ?? '');
+        $total = (int)($row['total'] ?? 0);
+        if ($sex === 'Male') {
+            $response['chart_gender_series'][0] = $total;
+        } elseif ($sex === 'Female') {
+            $response['chart_gender_series'][1] = $total;
+        }
+    }
+    $stmtGender->close();
+
+    // =========================================================
+    // ENCOUNTER RESPONDEN
+    // =========================================================
+    $response['chart_encounter_labels'] = ['Rajal', 'Ranap'];
+    $response['chart_encounter_series'] = [0, 0];
+
+    $stmtEncounter = $Conn->prepare("
+        SELECT kunjungan_tujuan, COUNT(*) AS total
+        FROM respondent
+        GROUP BY kunjungan_tujuan
+    ");
+    if (!$stmtEncounter) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mempersiapkan data encounter."
+        ]);
+        exit;
+    }
+    if (!$stmtEncounter->execute()) {
+        echo json_encode([
+            "status"  => "error",
+            "message" => "Gagal mengambil data encounter."
+        ]);
+        $stmtEncounter->close();
+        exit;
+    }
+    $resultEncounter = $stmtEncounter->get_result();
+    while ($row = $resultEncounter->fetch_assoc()) {
+        $tujuan = (string)($row['kunjungan_tujuan'] ?? '');
+        $total = (int)($row['total'] ?? 0);
+        if ($tujuan === 'Rajal') {
+            $response['chart_encounter_series'][0] = $total;
+        } elseif ($tujuan === 'Ranap') {
+            $response['chart_encounter_series'][1] = $total;
+        }
+    }
+    $stmtEncounter->close();
 
     echo json_encode($response);
 ?>

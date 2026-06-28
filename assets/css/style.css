@@ -424,6 +424,13 @@ body.dark-mode {
     padding: 1.5rem;
 }
 
+.content-card-heavy {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 420px;
+}
+
 .hero-panel.hero-bg-image {
     position: relative;
     overflow: hidden;
@@ -496,6 +503,9 @@ body.dark-mode {
 
 .chart-box {
     min-height: 320px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .activity-list {

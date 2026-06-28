@@ -1,24 +1,33 @@
 // ======================================================
+// CHART STATE
+// ======================================================
+
+const dashboardCharts = {};
+
+// ======================================================
 // FUNCTION
 // ======================================================
 
-let dashboardChart = null;
-
-function RenderPartisipasiChart(labels, series) {
-    const chartTarget = document.querySelector('#chart_partisipasi_responden');
+function RenderChart(targetSelector, options) {
+    const chartTarget = document.querySelector(targetSelector);
 
     if (!chartTarget || typeof ApexCharts === 'undefined') {
         return;
     }
 
-    if (dashboardChart !== null) {
-        dashboardChart.destroy();
-        dashboardChart = null;
+    if (dashboardCharts[targetSelector]) {
+        dashboardCharts[targetSelector].destroy();
+        delete dashboardCharts[targetSelector];
     }
 
     chartTarget.innerHTML = '';
 
-    const options = {
+    dashboardCharts[targetSelector] = new ApexCharts(chartTarget, options);
+    dashboardCharts[targetSelector].render();
+}
+
+function RenderMonthlyPartisipasiChart(labels, series) {
+    RenderChart('#chart_partisipasi_responden', {
         series: [{
             name: 'Responden',
             data: series
@@ -62,7 +71,7 @@ function RenderPartisipasiChart(labels, series) {
             min: 0,
             forceNiceScale: true,
             labels: {
-                formatter: function (value) {
+                formatter: function(value) {
                     return Math.round(value);
                 }
             }
@@ -73,7 +82,7 @@ function RenderPartisipasiChart(labels, series) {
         },
         tooltip: {
             y: {
-                formatter: function (value) {
+                formatter: function(value) {
                     return value + ' responden';
                 }
             }
@@ -81,15 +90,128 @@ function RenderPartisipasiChart(labels, series) {
         noData: {
             text: 'Tidak ada data untuk ditampilkan'
         }
-    };
+    });
+}
 
-    dashboardChart = new ApexCharts(chartTarget, options);
-    dashboardChart.render();
+function RenderGapPartisipasiChart(labels, series) {
+    RenderChart('#chart_gap_partisipasi_responden', {
+        series: series,
+        chart: {
+            height: 360,
+            type: 'donut',
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Plus Jakarta Sans, sans-serif'
+        },
+        labels: labels,
+        colors: ['#6c757d', '#0d6efd'],
+        legend: {
+            position: 'bottom'
+        },
+        dataLabels: {
+            enabled: true
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '68%'
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function(value) {
+                    return value + ' responden';
+                }
+            }
+        },
+        noData: {
+            text: 'Tidak ada data untuk ditampilkan'
+        }
+    });
+}
+
+function RenderGenderChart(labels, series) {
+    RenderChart('#chart_gender_responden', {
+        series: series,
+        chart: {
+            height: 360,
+            type: 'donut',
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Plus Jakarta Sans, sans-serif'
+        },
+        labels: labels,
+        colors: ['#198754', '#d63384'],
+        legend: {
+            position: 'bottom'
+        },
+        dataLabels: {
+            enabled: true
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '68%'
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function(value) {
+                    return value + ' responden';
+                }
+            }
+        },
+        noData: {
+            text: 'Tidak ada data untuk ditampilkan'
+        }
+    });
+}
+
+function RenderEncounterChart(labels, series) {
+    RenderChart('#chart_encounter_responden', {
+        series: series,
+        chart: {
+            height: 360,
+            type: 'donut',
+            toolbar: {
+                show: false
+            },
+            fontFamily: 'Plus Jakarta Sans, sans-serif'
+        },
+        labels: labels,
+        colors: ['#fd7e14', '#20c997'],
+        legend: {
+            position: 'bottom'
+        },
+        dataLabels: {
+            enabled: true
+        },
+        plotOptions: {
+            pie: {
+                donut: {
+                    size: '68%'
+                }
+            }
+        },
+        tooltip: {
+            y: {
+                formatter: function(value) {
+                    return value + ' responden';
+                }
+            }
+        },
+        noData: {
+            text: 'Tidak ada data untuk ditampilkan'
+        }
+    });
 }
 
 // Menampilkan Count Dashboard
 function ShowCount() {
-
     const targetPertanyaan = $('#jumlah_pertanyaan');
     const targetResponden = $('#jumlah_responden');
     const targetUndangan = $('#jumlah_undangan');
@@ -103,11 +225,11 @@ function ShowCount() {
     targetNotifikasi.html('');
 
     $.ajax({
-        type    : 'POST',
-        url     : '_Page/Dashboard/Count.php',
-        data    : {},
+        type: 'POST',
+        url: '_Page/Dashboard/Count.php',
+        data: {},
         dataType: 'json',
-        success : function(res) {
+        success: function(res) {
             const status = res.status;
             const message = res.message || 'Terjadi kesalahan.';
 
@@ -116,8 +238,27 @@ function ShowCount() {
                 targetResponden.html(res.jumlah_responden);
                 targetUndangan.html(res.jumlah_undangan);
                 targetJawaban.html(res.jumlah_jawaban);
-                RenderPartisipasiChart(res.chart_labels || [], res.chart_series || []);
-            }else{
+
+                RenderMonthlyPartisipasiChart(
+                    res.chart_labels || [],
+                    res.chart_series || []
+                );
+
+                RenderGapPartisipasiChart(
+                    res.chart_gap_labels || [],
+                    res.chart_gap_series || []
+                );
+
+                RenderGenderChart(
+                    res.chart_gender_labels || [],
+                    res.chart_gender_series || []
+                );
+
+                RenderEncounterChart(
+                    res.chart_encounter_labels || [],
+                    res.chart_encounter_series || []
+                );
+            } else {
                 targetNotifikasi.html(
                     '<section class="section dashboard"><div class="alert alert-danger mb-0">' +
                     message +

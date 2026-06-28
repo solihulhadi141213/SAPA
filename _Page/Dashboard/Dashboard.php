@@ -62,7 +62,7 @@
     </div>
 </section>
 
-<section class="row g-4">
+<section class="row mb-3 g-4">
     <div class="col-12">
         <div class="content-card content-card-heavy">
             <div class="d-flex justify-content-between align-items-center mb-3">
@@ -75,6 +75,54 @@
             <div class="chart-box" id="chart_partisipasi_responden">
                 <div class="chart-placeholder h-100 d-flex align-items-center justify-content-center">
                     <!-- Menampilkan Chart Disini -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-md-4 mb-3">
+        <div class="content-card content-card-heavy">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="mb-1">Capaian Partisipasi Responden</h5>
+                    <small class="text-muted">Perbandingan Jumlah Total Responden Dengan Jumlah Jawaban</small>
+                </div>
+            </div>
+            <div class="chart-box" id="chart_gap_partisipasi_responden">
+                <div class="chart-placeholder h-100 d-flex align-items-center justify-content-center">
+                    <!-- Menampilkan Chart Jumlah Jumlah Responden Vs Jawaban Disini -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="content-card content-card-heavy">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="mb-1">Gender</h5>
+                    <small class="text-muted">Jumlah Responden Berdasarkan Gender</small>
+                </div>
+            </div>
+            <div class="chart-box" id="chart_gender_responden">
+                <div class="chart-placeholder h-100 d-flex align-items-center justify-content-center">
+                    <!-- Menampilkan Chart Jumlah Responden Berdasarkan Gender Disini -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="content-card content-card-heavy">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h5 class="mb-1">Tujuan Kunjungan</h5>
+                    <small class="text-muted">Jumlah Responden Berdasarkan Tujuan Kunjungan</small>
+                </div>
+            </div>
+            <div class="chart-box" id="chart_encounter_responden">
+                <div class="chart-placeholder h-100 d-flex align-items-center justify-content-center">
+                    <!-- Menampilkan Chart Jumlah Responden Berdasarkan Tujuan Kunjungan Disini -->
                 </div>
             </div>
         </div>
