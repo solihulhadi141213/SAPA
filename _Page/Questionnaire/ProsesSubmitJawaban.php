@@ -93,7 +93,7 @@
             throw new Exception("Gagal mempersiapkan penyimpanan jawaban.");
         }
 
-        $stmt_update_log = $Conn->prepare("UPDATE survey_log SET answer = 1 WHERE id_respondent = ? AND invitation_token = ? LIMIT 1");
+        $stmt_update_log = $Conn->prepare("UPDATE survey_log SET answer = 1, datetime_answer = NOW() WHERE id_respondent = ? AND invitation_token = ? LIMIT 1");
         if (!$stmt_update_log) {
             throw new Exception("Gagal mempersiapkan pembaruan status undangan.");
         }

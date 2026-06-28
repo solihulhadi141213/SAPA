@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 27, 2026 at 06:01 PM
+-- Generation Time: Jun 27, 2026 at 10:12 PM
 -- Server version: 9.1.0
 -- PHP Version: 8.1.31
 
@@ -187,6 +187,7 @@ CREATE TABLE IF NOT EXISTS `survey_log` (
   `method_invitation` enum('Whatsapp','Email','Manual') NOT NULL,
   `no_wa` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
+  `datetime_answer` datetime DEFAULT NULL,
   `answer` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_survey_log`),
   KEY `invitation_to_responden` (`id_respondent`)

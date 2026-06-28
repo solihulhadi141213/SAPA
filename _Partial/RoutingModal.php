@@ -14,6 +14,7 @@
             "Responden"       => "_Page/Responden/ModalResponden.php",
             "Pertanyaan"      => "_Page/Pertanyaan/ModalPertanyaan.php",
             "Undangan"        => "_Page/Undangan/ModalUndangan.php",
+            "Jawaban"         => "_Page/Jawaban/ModalJawaban.php",
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya

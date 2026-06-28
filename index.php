@@ -34,6 +34,7 @@
             "Responden"       => "Responden",
             "Pertanyaan"      => "Daftar Pertanyaan",
             "Undangan"        => "Undangan",
+            "Jawaban"         => "Jawaban",
         ];
         
         // Init Page Title

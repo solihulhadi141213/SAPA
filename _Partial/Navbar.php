@@ -57,17 +57,25 @@
                                 <li><a class="dropdown-item <?php if($Page=="Pertanyaan"){echo "active";}  ?>" href="index.php?Page=Pertanyaan">Daftar Pertanyaan</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Responden"){echo "active";}  ?>" href="index.php?Page=Responden">Responden</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="Undangan"){echo "active";}  ?>" href="index.php?Page=Undangan">Undangan</a></li>
-                                <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban Responden</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Jawaban"){echo "active";}  ?>" href="index.php?Page=Jawaban">Jawaban</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle 
+                             <?php 
+                                    if(
+                                        $Page=="DeskripsiResponden"||
+                                        $Page=="DeskripsiPertanyaan"||
+                                        $Page=="Skoring"
+                                    ){echo "active";} 
+                                ?>
+                            " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-file-earmark-text me-1"></i>Laporan
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end shadow">
-                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Daftar Responden</a></li>
-                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Kirim Tautan</a></li>
-                                <li><a class="dropdown-item" href="index.php?Page=Laporan">Riwayat Undangan</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="DeskripsiResponden"){echo "active";}  ?>" href="index.php?Page=DeskripsiResponden">Deskripsi Responden</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="DeskripsiPertanyaan"){echo "active";}  ?>" href="index.php?Page=DeskripsiPertanyaan">Deskripsi Pertanyaan</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="Skoring"){echo "active";}  ?>" href="index.php?Page=Skoring">Skoring</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">

@@ -15,6 +15,7 @@
             "Responden"       => "_Page/Responden/Responden.php",
             "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.php",
             "Undangan"        => "_Page/Undangan/Undangan.php",
+            "Jawaban"         => "_Page/Jawaban/Jawaban.php",
             "Error"           => "_Page/Error/Error.php"
         ];
 
