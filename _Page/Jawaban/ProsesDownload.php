@@ -241,11 +241,12 @@
         $questionNumber = (int)($question['question_order'] ?? 0);
         $questionText = trim((string)($question['question_text'] ?? ''));
         $cellValue = 'Item ' . $questionNumber;
-        if ($questionText !== '') {
-            $cellValue = 'Item ' . $questionNumber;
-        }
         $sheet->setCellValueByColumnAndRow($colIndex, $headerRow, $cellValue);
-        $sheet->getCommentByColumnAndRow($colIndex, $headerRow)->getText()->createTextRun('Pertanyaan: ' . $questionText);
+        $commentText = 'Pertanyaan ' . $questionNumber;
+        if ($questionText !== '') {
+            $commentText .= ': ' . $questionText;
+        }
+        $sheet->getCommentByColumnAndRow($colIndex, $headerRow)->getText()->createTextRun($commentText);
         $colIndex++;
     }
 
