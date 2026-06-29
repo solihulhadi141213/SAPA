@@ -25,29 +25,38 @@ function ShowDeskripsiResponden() {
 }
 
 $(document).ready(function() {
-    ShowDeskripsiResponden();
 
-    $('#ProsesFilter').submit(function(e) {
+    // Tampilkan Modal Periode
+    $('#ModalPeriode').modal('show');
+
+    // Ketika ProsesFilter Di Submit
+    $('#ProsesFilter').on('submit', function (e) {
         e.preventDefault();
-        $('#page').val('1');
-        ShowDeskripsiResponden();
-        $('#ModalFilter').modal('hide');
-    });
 
-    $(document).on('click', '#next_button', function() {
-        let page_now = parseInt($('#page').val(), 10);
-        $('#page').val(page_now + 1);
-        ShowDeskripsiResponden();
-    });
+        // Ambil periode
+        let periode_awal  = $('#periode_awal').val();
+        let periode_akhir = $('#periode_akhir').val();
 
-    $(document).on('click', '#prev_button', function() {
-        let page_now = parseInt($('#page').val(), 10);
-        $('#page').val(page_now - 1);
-        ShowDeskripsiResponden();
-    });
+        // Loading
+        $('#show_report').html('Loading...');
 
-    $(document).on('click', '.reload_data', function() {
-        $('#ProsesFilter')[0].reset();
-        ShowDeskripsiResponden();
+        $.ajax({
+            type: 'POST',
+            url: '_Page/DeskripsiResponden/TabelDeskripsiResponden.php',
+            data: {
+                periode_awal: periode_awal,
+                periode_akhir: periode_akhir
+            },
+            success: function (response) {
+                $('#show_report').html(response);
+                $('#ModalPeriode').modal('hide');
+            },
+            error: function (xhr, status, error) {
+                $('#show_report').html(
+                    '<div class="alert alert-danger">Terjadi kesalahan saat memuat data.</div>'
+                );
+                console.error(error);
+            }
+        });
     });
 });

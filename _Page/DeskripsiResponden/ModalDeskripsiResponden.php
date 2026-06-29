@@ -1,12 +1,10 @@
-<div class="modal fade" id="ModalFilter" tabindex="-1">
+<div class="modal fade" id="ModalPeriode" tabindex="-1">
     <div class="modal-dialog modal-md">
         <div class="modal-content rounded-4 shadow-lg">
             <form action="javascript:void(0);" id="ProsesFilter">
-                <input type="hidden" name="page" id="page" value="1">
-                <input type="hidden" name="batas" id="batas" value="10">
                 <div class="modal-header">
                     <h5 class="modal-title text-dark fw-semibold">
-                        <i class="bi bi-funnel me-2"></i> Filter Data
+                        <i class="bi bi-funnel me-2"></i> Periode Data
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -16,7 +14,7 @@
                             <label for="periode_awal"><small>Periode Awal</small></label>
                         </div>
                         <div class="col-8">
-                            <input type="date" name="periode_awal" id="periode_awal" class="form-control">
+                            <input type="date" name="periode_awal" id="periode_awal" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -24,41 +22,7 @@
                             <label for="periode_akhir"><small>Periode Akhir</small></label>
                         </div>
                         <div class="col-8">
-                            <input type="date" name="periode_akhir" id="periode_akhir" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4">
-                            <label for="OrderBy"><small>Dasar Urutan</small></label>
-                        </div>
-                        <div class="col-8">
-                            <select name="OrderBy" id="OrderBy" class="form-control">
-                                <option value="datetime_invitation">Tanggal Undangan</option>
-                                <option value="id_pasien">No Rm</option>
-                                <option value="respondent_name">Nama Responden</option>
-                                <option value="method_invitation">Metode</option>
-                                <option value="no_wa">No WA</option>
-                                <option value="email">Email</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4">
-                            <label for="ShortBy"><small>Tipe Urutan</small></label>
-                        </div>
-                        <div class="col-8">
-                            <select name="ShortBy" id="ShortBy" class="form-control">
-                                <option value="ASC">A To Z</option>
-                                <option value="DESC">Z To A</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4">
-                            <label for="keyword"><small>Kata Kunci</small></label>
-                        </div>
-                        <div class="col-8">
-                            <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Opsional">
+                            <input type="date" name="periode_akhir" id="periode_akhir" class="form-control" required>
                         </div>
                     </div>
                 </div>
