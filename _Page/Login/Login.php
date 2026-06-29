@@ -103,7 +103,7 @@
                                     <button type="submit" class="btn btn-success btn-lg" id="ButtonLogin">
                                         <i class="bi bi-arrow-up-right"></i>Login
                                     </button>
-                                    <a href="" class="btn google-btn btn-lg">
+                                    <a href="_Page/Login/LoginGoogle.php" class="btn google-btn btn-lg">
                                         <i class="bi bi-google me-2"></i>Login Dengan Google
                                     </a>
                                 </div>

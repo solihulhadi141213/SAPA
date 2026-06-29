@@ -72,7 +72,7 @@
                     $page_heading = $already_filled ? 'Sesi Sudah Diisi' : 'Kuesioner Siap Diisi';
                     $page_message = $already_filled
                         ? 'Berdasarkan token ini, sesi pertanyaan sudah pernah diisi. Terima kasih atas partisipasinya.'
-                        : 'Silakan isi pertanyaan berikut dengan jujur dan sesuai kondisi yang dirasakan.';
+                        : 'Dengan hormat., Dalam rangka meningkatkan mutu pelayanan di RS, kami mohon partisipasi bapak/ibu/sdr secara sukarela untuk mengisi kuesioner dan menjawab pertanyaan secara jujur dan benar.Atas kerjasama bapak/ibu/sdr kami ucapkan terimakasih.';
                     $page_badge = $already_filled ? 'Sudah Diisi' : 'Tersedia';
                     $page_icon = $already_filled ? 'bi-check-circle-fill' : 'bi-clipboard2-check-fill';
                     $page_color = $already_filled ? 'success' : 'primary';

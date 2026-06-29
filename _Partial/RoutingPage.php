@@ -6,17 +6,19 @@
         
         //Index Halaman
         $page_arry=[
-            "MyProfile"       => "_Page/MyProfile/MyProfile.php",
-            "Aksesibilitas"   => "_Page/Aksesibilitas/Aksesibilitas.php",
-            "SettingGeneral"  => "_Page/SettingGeneral/SettingGeneral.php",
-            "KoneksiSimrs"    => "_Page/KoneksiSimrs/KoneksiSimrs.php",
-            "EmailGateway"    => "_Page/EmailGateway/EmailGateway.php",
-            "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.php",
-            "Responden"       => "_Page/Responden/Responden.php",
-            "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.php",
-            "Undangan"        => "_Page/Undangan/Undangan.php",
-            "Jawaban"         => "_Page/Jawaban/Jawaban.php",
-            "Error"           => "_Page/Error/Error.php"
+            "MyProfile"          => "_Page/MyProfile/MyProfile.php",
+            "Aksesibilitas"      => "_Page/Aksesibilitas/Aksesibilitas.php",
+            "SettingGeneral"     => "_Page/SettingGeneral/SettingGeneral.php",
+            "KoneksiSimrs"       => "_Page/KoneksiSimrs/KoneksiSimrs.php",
+            "EmailGateway"       => "_Page/EmailGateway/EmailGateway.php",
+            "WahtsappGateway"    => "_Page/WahtsappGateway/WahtsappGateway.php",
+            "Responden"          => "_Page/Responden/Responden.php",
+            "Pertanyaan"         => "_Page/Pertanyaan/Pertanyaan.php",
+            "Undangan"           => "_Page/Undangan/Undangan.php",
+            "Jawaban"            => "_Page/Jawaban/Jawaban.php",
+            "DeskripsiResponden" => "_Page/DeskripsiResponden/DeskripsiResponden.php",
+            "GoogleCredential"   => "_Page/GoogleCredential/GoogleCredential.php",
+            "Error"              => "_Page/Error/Error.php"
         ];
 
         //Tangkap 'Page'

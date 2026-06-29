@@ -7,16 +7,18 @@
         $Page=$_GET['Page'];
         // Routing Javascript Berdasarkan Halaman
         $scripts = [
-            "MyProfile"       => "_Page/MyProfile/MyProfile.js",
-            "Aksesibilitas"   => "_Page/Aksesibilitas/Aksesibilitas.js",
-            "SettingGeneral"  => "_Page/SettingGeneral/SettingGeneral.js",
-            "KoneksiSimrs"    => "_Page/KoneksiSimrs/KoneksiSimrs.js",
-            "EmailGateway"    => "_Page/EmailGateway/EmailGateway.js",
-            "WahtsappGateway" => "_Page/WahtsappGateway/WahtsappGateway.js",
-            "Responden"       => "_Page/Responden/Responden.js",
-            "Pertanyaan"      => "_Page/Pertanyaan/Pertanyaan.js",
-            "Undangan"        => "_Page/Undangan/Undangan.js",
-            "Jawaban"         => "_Page/Jawaban/Jawaban.js",
+            "MyProfile"          => "_Page/MyProfile/MyProfile.js",
+            "Aksesibilitas"      => "_Page/Aksesibilitas/Aksesibilitas.js",
+            "SettingGeneral"     => "_Page/SettingGeneral/SettingGeneral.js",
+            "KoneksiSimrs"       => "_Page/KoneksiSimrs/KoneksiSimrs.js",
+            "EmailGateway"       => "_Page/EmailGateway/EmailGateway.js",
+            "WahtsappGateway"    => "_Page/WahtsappGateway/WahtsappGateway.js",
+            "Responden"          => "_Page/Responden/Responden.js",
+            "Pertanyaan"         => "_Page/Pertanyaan/Pertanyaan.js",
+            "Undangan"           => "_Page/Undangan/Undangan.js",
+            "Jawaban"            => "_Page/Jawaban/Jawaban.js",
+            "DeskripsiResponden" => "_Page/DeskripsiResponden/DeskripsiResponden.js",
+            "GoogleCredential"   => "_Page/GoogleCredential/GoogleCredential.js",
         ];
 
         // Cek apakah halaman ada dalam daftar dan sertakan file JS yang sesuai

@@ -86,7 +86,8 @@
                                     $Page=="SettingGeneral"||
                                     $Page=="KoneksiSimrs"||
                                     $Page=="EmailGateway"||
-                                    $Page=="WahtsappGateway"
+                                    $Page=="WahtsappGateway" ||
+                                    $Page=="GoogleCredential"
                                 ){echo "active";} 
                             ?>
                             " href="javascript:void(0);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -98,6 +99,7 @@
                                 <li><a class="dropdown-item <?php if($Page=="KoneksiSimrs"){echo "active";}  ?>" href="index.php?Page=KoneksiSimrs">Koneksi SIMRS</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="EmailGateway"){echo "active";}  ?>" href="index.php?Page=EmailGateway">Email Gateway</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="WahtsappGateway"){echo "active";}  ?>" href="index.php?Page=WahtsappGateway">WhatsApp Gateway</a></li>
+                                <li><a class="dropdown-item <?php if($Page=="GoogleCredential"){echo "active";}  ?>" href="index.php?Page=GoogleCredential">Google Credential</a></li>
                             </ul>
                         </li>
 
