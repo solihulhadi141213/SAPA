@@ -119,7 +119,6 @@ Setelah aplikasi terbuka:
 ---
 
 ## Catatan Penting
-
 * Jika aplikasi tidak bisa terhubung ke database, periksa kembali nama database, username, dan password pada `_Config/Connection.php`.
 * Jika folder proyek Anda berbeda, sesuaikan alamat URL saat membuka aplikasi.
 * Pastikan ekstensi `mysqli` aktif pada PHP.

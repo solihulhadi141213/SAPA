@@ -75,7 +75,6 @@
                             <ul class="dropdown-menu dropdown-menu-end shadow">
                                 <li><a class="dropdown-item <?php if($Page=="DeskripsiResponden"){echo "active";}  ?>" href="index.php?Page=DeskripsiResponden">Deskripsi Responden</a></li>
                                 <li><a class="dropdown-item <?php if($Page=="DeskripsiPertanyaan"){echo "active";}  ?>" href="index.php?Page=DeskripsiPertanyaan">Deskripsi Pertanyaan</a></li>
-                                <li><a class="dropdown-item <?php if($Page=="Skoring"){echo "active";}  ?>" href="index.php?Page=Skoring">Skoring</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
