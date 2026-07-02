@@ -1,0 +1,210 @@
+<?php
+    
+    // Connection, Function dan Session
+    include "../../_Config/Connection.php";
+    include "../../_Config/Helper.php";
+    include "../../_Config/Session.php";
+
+    // Validasi Session
+    if (empty($SessionIdAkses)) {
+        echo '
+            <div class="alert alert-danger text-center mb-3">
+                <small>
+                    <b>Opss!</b><br>
+                    Sesi akses sudah berakhir! Silahkan Login Ulang.
+                </small>
+            </div>
+        ';
+        exit;
+    }
+
+    // Validasi id_survey_question 
+    if(empty($_POST['id_survey_question'])){
+        echo '
+            <div class="alert alert-danger text-center mb-3">
+                <small>
+                    <b>Opss!</b><br>
+                    Anda belum memilih data manapun
+                </small>
+            </div>
+        ';
+        exit;
+    }
+
+    // Variabel And Sanitazer
+    $id_survey_question=validateAndSanitizeInput($_POST['id_survey_question']);
+
+    // Open Data With Prepared Statmnet
+    $Qry = $Conn->prepare("SELECT*FROM survey_question WHERE id_survey_question = ? LIMIT 1");
+    if (!$Qry) {
+        echo '
+            <div class="alert alert-danger text-center mb-3">
+                <small>
+                    <b>Opss!</b><br>
+                    Terjadi kesalahan pada saat mempersiapkan query database!<br>
+                    Keterangan : ' . htmlspecialchars($Conn->error) . '
+                </small>
+            </div>
+        ';
+        exit;
+    }
+    $Qry->bind_param("s", $id_survey_question);
+    if (!$Qry->execute()) {
+        echo '
+            <div class="alert alert-danger text-center mb-3">
+                <small>
+                    <b>Opss!</b><br>
+                    Terjadi kesalahan pada saat membuka data dari database!<br>
+                    Keterangan : ' . htmlspecialchars($Qry->error) . '
+                </small>
+            </div>
+        ';
+        $Qry->close();
+        exit;
+    }
+    $Result = $Qry->get_result();
+
+    // Jika Tidak Ditemukan
+    if ($Result->num_rows == 0) {
+        echo '
+            <div class="alert alert-danger text-center mb-3">
+                <small>
+                    <b>Opss!</b><br>
+                    Data tidak ditemukan!
+                </small>
+            </div>
+        ';
+        $Qry->close();
+        exit;
+    }
+    $Data               = $Result->fetch_assoc();
+
+    // Buat Variabel
+    $question_order      = htmlspecialchars($Data['question_order']);
+    $question_type       = htmlspecialchars($Data['question_type']);
+    $mandatory           = htmlspecialchars($Data['mandatory']);
+    $question_text       = htmlspecialchars($Data['question_text']);
+    $alternative_answers = $Data['alternative_answers'];
+    $status              = htmlspecialchars($Data['status']);
+    $Qry->close();
+
+    // Routing Mantaory
+    if($mandatory==1){
+        $mandatory_label = "Ya";
+    }else{
+        $mandatory_label = "Tidak";
+    }
+
+    //Routing status
+    if((int)$status===0){
+        $status_note = '<span class="badge bg-danger-subtle text-danger border border-danger-subtle">Nonaktif</span>';
+    }else{
+        $status_note = '<span class="badge bg-success-subtle text-success border border-success-subtle">Aktif</span>';
+    }
+?>
+    <section class="hero-panel mb-4">
+        <div class="row mb-4">
+            <div class="col-12">
+                <b class="card-title">A. Detail Pertanyaan</b>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-4"><small>Order</small></div>
+            <div class="col-1"><small>:</small></div>
+            <div class="col-6">
+                <small class="text-grayish">
+                    <?php echo "$question_order"; ?>
+                </small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-4"><small>Type</small></div>
+            <div class="col-1"><small>:</small></div>
+            <div class="col-6">
+                <small class="text-grayish">
+                    <?php echo "$question_type"; ?>
+                </small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-4"><small>Mandatory</small></div>
+            <div class="col-1"><small>:</small></div>
+            <div class="col-6">
+                <small class="text-grayish">
+                    <?php echo "$mandatory_label"; ?>
+                </small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-4"><small>Pertanyaan</small></div>
+            <div class="col-1"><small>:</small></div>
+            <div class="col-6">
+                <small class="text-grayish">
+                    <?php echo "$question_text"; ?>
+                </small>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-4"><small>Status</small></div>
+            <div class="col-1"><small>:</small></div>
+            <div class="col-6">
+                <small class="text-grayish">
+                    <?php echo "$status_note"; ?>
+                </small>
+            </div>
+        </div>
+    </section>
+
+    <?php if($question_type=="coded"){ ?>
+        <section class="hero-panel mb-4">
+            <div class="row mb-4">
+                <div class="col-8">
+                    <b class="card-title">B. Alternatif Jawaban</b>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <div class="table table-responsive">
+                        <table class="table table-hover table-bordered table-sm">
+                            <thead>
+                                <tr>
+                                    <td class="text-center"><small><b>No</b></small></td>
+                                    <td><small><b>Label</b></small></td>
+                                    <td><small><b>Value</b></small></td>
+                                    <td><small><b>Responden</b></small></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    // Ubah $alternative_answers menjadi arry
+                                    $no = 1;
+                                    $arry = json_decode($alternative_answers, true);
+                                    foreach ($arry as $data_list) {
+                                        $label = $data_list['label'];
+                                        $value = $data_list['value'];
+
+                                        // Menghitung Jumlah Responden Yang Menjawab
+                                        $jumlah_responden = mysqli_num_rows(mysqli_query($Conn, "SELECT id_survey_answer FROM survey_answer WHERE id_survey_question = '$id_survey_question' AND answer_text = '$value'"));
+
+                                        echo '
+                                            <tr>
+                                                <td class="text-center"><small>'.$no.'</small></td>
+                                                <td class="text-left"><small>'.$label.'</small></td>
+                                                <td class="text-left"><small>'.$value.'</small></td>
+                                                <td class="text-left">
+                                                    <a href="javascript:void(0);" class="text text-primary text-decoration-underline rincian_jawaban" data-id="'.$id_survey_question.'" data-value="'.$value.'">
+                                                        <small>'.$jumlah_responden.' Record</small>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        ';
+                                        $no++;
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php } ?>
