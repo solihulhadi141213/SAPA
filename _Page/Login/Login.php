@@ -94,7 +94,7 @@
                                     <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Ketik kode captcha di atas" required>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
-                                    <a href="ResetPassword.php" class="link-success text-decoration-none">Lupa password?</a>
+                                    <a href="_Page/Login/ResetPassword.php" class="link-success text-decoration-none">Lupa password?</a>
                                 </div>
                                 <div class="mb-2" id="NotifikasiLogin">
                                     <!-- Notifikasi Login Disini -->
