@@ -61,7 +61,7 @@
                             </div>
                             <div class="mt-4">
                                 <div class="small opacity-75">
-                                    <a href="index.php" class="text text-white">Kembali Ke Halaman Login</a>
+                                    <a href="../../index.php" class="text text-white">Kembali Ke Halaman Login</a>
                                 </div>
                             </div>
                         </div>
